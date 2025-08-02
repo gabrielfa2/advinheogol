@@ -432,7 +432,7 @@ class FootballQuizGame {
         
         const result = this.gameWon ? 
             `${this.attemptsUsed}/${this.maxAttempts}` : 
-            'X/6';
+            `X/${this.maxAttempts}`;
         
         return `⚽ Adivinhe o Gol #${this.currentGoal.id} ${result}\n\n${emojiSequence.join('')}\n\n#AdivinheOGol\nJogue em: ${window.location.href}`;
     }
