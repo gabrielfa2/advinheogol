@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinhe o Gol - Quiz de Futebol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="welcome-text">Bem vindo, Jogador</div>
+            <h1 class="title">Adivinhe o G<span class="emoji-ball">⚽</span>l</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="left-column">
+                <div class="video-container">
+                    <video id="gameVideo" class="game-video blurred" loop muted>
+                        <source src="" type="video/mp4">
+                        Seu navegador não suporta o elemento video.
+                    </video>
+                    <div class="video-overlay">
+                        <div class="play-icon">⚽</div>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="statsUsed">0</div>
+                            <div class="stat-label">Tentativas Usadas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="statsRemaining">6</div>
+                            <div class="stat-label">Tentativas Restantes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="statsCorrect">0</div>
+                            <div class="stat-label">Acertos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-interface">
+                <div class="attempts-section">
+                    <div class="attempts-counter">
+                        <div class="attempts-boxes">
+                            <div class="attempt-box"></div>
+                            <div class="attempt-box"></div>
+                            <div class="attempt-box"></div>
+                            <div class="attempt-box"></div>
+                            <div class="attempt-box"></div>
+                            <div class="attempt-box"></div>
+                            <div class="attempt-box"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hints-grid">
+                    <div class="hint-item" data-hint="team">
+                        <div class="hint-label">Equipa</div>
+                        <div class="hint-value">????</div>
+                    </div>
+                    <div class="hint-item" data-hint="year">
+                        <div class="hint-label">Ano</div>
+                        <div class="hint-value">????</div>
+                    </div>
+                    <div class="hint-item" data-hint="competition">
+                        <div class="hint-label">Competição</div>
+                        <div class="hint-value">????</div>
+                    </div>
+                    <div class="hint-item" data-hint="position">
+                        <div class="hint-label">Posição</div>
+                        <div class="hint-value">????</div>
+                    </div>
+                    <div class="hint-item" data-hint="jerseyNumber">
+                        <div class="hint-label">Número</div>
+                        <div class="hint-value">????</div>
+                    </div>
+                    <div class="hint-item" data-hint="dominantFoot">
+                        <div class="hint-label">Pé Dominante</div>
+                        <div class="hint-value">????</div>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            id="playerInput" 
+                            placeholder="Digite o nome do jogador..."
+                            autocomplete="off"
+                        >
+                        <div id="suggestions" class="suggestions-dropdown"></div>
+                    </div>
+                    <button id="guessButton" class="guess-button">
+                        <span>Adivinhar</span>
+                    </button>
+                </div>
+
+                <div class="game-mode-section">
+                    <button id="playAgainButton" class="play-again-button" style="display: none;">
+                        🎮 Jogar à Vontade
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="gameEndModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Parabéns!</h2>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalResult" class="modal-result"></div>
+                <div class="goal-details">
+                    <h3 id="goalPlayer"></h3>
+                    <p id="goalDescription"></p>
+                </div>
+                <div class="statistics-chart">
+                    <h4>Distribuição de Vitórias</h4>
+                    <div id="victoryChart" class="victory-chart"></div>
+                </div>
+                <div class="modal-actions">
+                    <button id="shareButton" class="share-button">📱 Partilhar</button>
+                    <button id="newGameButton" class="new-game-button">🎯 Novo Jogo</button>
+                </div>
+                <div id="nextGameCountdown" class="countdown" style="display: none;">
+                    <p>Próximo desafio em: <span id="countdownTimer"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="goalDetailsCard" class="goal-details-card" style="display: none;">
+        <div class="card-content">
+            <h3 id="cardPlayerName"></h3>
+            <p id="cardDescription"></p>
+            <div class="card-meta">
+                <span id="cardTeam"></span> • <span id="cardYear"></span> • <span id="cardCompetition"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="gameData.js"></script>
+    <script src="autocomplete.js"></script>
+    <script src="gameLogic.js"></script>
+    <script src="modal.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
