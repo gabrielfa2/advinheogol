@@ -287,7 +287,7 @@ class FootballQuizGame {
         
         chartContainer.innerHTML = '';
         
-        for (let i = 1; i <= 6; i++) {
+        for (let i = 1; i <= this.maxAttempts; i++) {
             const count = stats.distribution[i] || 0;
             const percentage = stats.totalGames > 0 ? (count / stats.totalGames) * 100 : 0;
             
