@@ -43,23 +43,29 @@ class FootballQuizGame {
         this.playAgainButton.addEventListener('click', () => this.startNewGame('freeplay'));
         this.dailyChallengeButton.addEventListener('click', () => this.startNewGame('daily'));
         
-        // NEW: Scroll listener for the details card
-        window.addEventListener('scroll', () => this.handleCardVisibilityOnScroll());
+        // Listener for scroll and window resize to handle card visibility
+        window.addEventListener('scroll', () => this.handleCardVisibility());
+        window.addEventListener('resize', () => this.handleCardVisibility());
     }
     
-    // NEW: Function to handle card visibility based on scroll
-    handleCardVisibilityOnScroll() {
-        // Only manage visibility if the game has ended and the card should be shown
+    // UPDATED: Function now handles both desktop and mobile logic
+    handleCardVisibility() {
+        // Only manage visibility if the game has ended
         if (!this.gameEnded) {
             return;
         }
 
-        if (window.scrollY > 20) {
-            // If user scrolls down, make the card visible
+        // Check if the viewport is desktop size (e.g., wider than 1024px)
+        if (window.innerWidth > 1024) {
+            // On desktop, the card should always be visible
             this.goalDetailsCard.classList.add('is-visible');
         } else {
-            // If user is at the top of the page, hide the card
-            this.goalDetailsCard.classList.remove('is-visible');
+            // On mobile, use the scroll-based logic
+            if (window.scrollY > 20) {
+                this.goalDetailsCard.classList.add('is-visible');
+            } else {
+                this.goalDetailsCard.classList.remove('is-visible');
+            }
         }
     }
 
@@ -226,8 +232,8 @@ class FootballQuizGame {
         
         this.goalDetailsCard.style.display = 'block';
 
-        // Immediately check scroll position to decide if card should be visible
-        this.handleCardVisibilityOnScroll();
+        // Immediately check visibility based on current viewport and scroll
+        this.handleCardVisibility();
     }
     
     updateUI() {
