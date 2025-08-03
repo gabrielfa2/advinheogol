@@ -461,9 +461,10 @@ body::before {
 /* Goal Details Card --- ALTERAÇÃO APLICADA AQUI --- */
 .goal-details-card {
     position: fixed;
-    top: 24px; /* Movido de 'bottom' para 'top' */
+    top: 24px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-150%); /* Começa escondido acima da tela */
+    opacity: 0;
     width: 90%;
     max-width: 400px;
     background: rgba(31, 41, 55, 0.95);
@@ -473,13 +474,15 @@ body::before {
     backdrop-filter: blur(15px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     z-index: 1500;
-    animation: cardSlideDown 0.5s ease; /* Animação atualizada */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Transição suave */
+    pointer-events: none; /* Impede interação quando escondido */
 }
 
-/* Animação atualizada para deslizar de cima para baixo */
-@keyframes cardSlideDown {
-    from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
-    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+/* Classe que torna o card visível */
+.goal-details-card.is-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto; /* Permite interação quando visível */
 }
 
 .card-content h3 { font-size: 20px; font-weight: 600; color: #22c55e; margin-bottom: 8px; }
