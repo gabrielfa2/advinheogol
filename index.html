@@ -14,116 +14,119 @@
             <h1 class="title">Adivinhe o G<span class="emoji-ball">⚽</span>l</h1>
         </header>
 
+        <!-- ESTRUTURA DO MAIN ATUALIZADA PARA PERMITIR REORDENAMENTO -->
         <main class="main-content">
-            <div class="left-column">
-                <div class="video-container">
-                    <!-- VIDEO ATUALIZADO: sem blur, com preload, autoplay e playsinline -->
-                    <video 
-                        id="gameVideo" 
-                        class="game-video" 
-                        loop 
-                        muted 
-                        autoplay 
-                        playsinline 
-                        preload="auto"
+
+            <!-- Bloco de Tentativas (movido para ser um filho direto) -->
+            <div class="attempts-section">
+                <div class="attempts-counter">
+                    <div class="attempts-boxes">
+                        <div class="attempt-box"></div>
+                        <div class="attempt-box"></div>
+                        <div class="attempt-box"></div>
+                        <div class="attempt-box"></div>
+                        <div class="attempt-box"></div>
+                        <div class="attempt-box"></div>
+                        <div class="attempt-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco do Vídeo -->
+            <div class="video-container">
+                <video 
+                    id="gameVideo" 
+                    class="game-video" 
+                    loop 
+                    muted 
+                    autoplay 
+                    playsinline 
+                    preload="auto"
+                >
+                    <source src="" type="video/mp4">
+                    Seu navegador não suporta o elemento video.
+                </video>
+                <div class="video-overlay" style="display: none;">
+                    <div class="play-icon">⚽</div>
+                </div>
+            </div>
+
+            <!-- Bloco de Estatísticas -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="statsUsed">0</div>
+                        <div class="stat-label">Tentativas Usadas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="statsRemaining">7</div>
+                        <div class="stat-label">Tentativas Restantes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="statsCorrect">0</div>
+                        <div class="stat-label">Acertos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco de Dicas -->
+            <div class="hints-grid">
+                <div class="hint-item" data-hint="team">
+                    <div class="hint-label">Equipe</div>
+                    <div class="hint-value">????</div>
+                </div>
+                <div class="hint-item" data-hint="year">
+                    <div class="hint-label">Ano</div>
+                    <div class="hint-value">????</div>
+                </div>
+                <div class="hint-item" data-hint="competition">
+                    <div class="hint-label">Competição</div>
+                    <div class="hint-value">????</div>
+                </div>
+                <div class="hint-item" data-hint="position">
+                    <div class="hint-label">Posição</div>
+                    <div class="hint-value">????</div>
+                </div>
+                <div class="hint-item" data-hint="jerseyNumber">
+                    <div class="hint-label">Número</div>
+                    <div class="hint-value">????</div>
+                </div>
+                <div class="hint-item" data-hint="dominantFoot">
+                    <div class="hint-label">Pé Dominante</div>
+                    <div class="hint-value">????</div>
+                </div>
+            </div>
+
+            <!-- Bloco de Input -->
+            <div class="input-section">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="playerInput" 
+                        placeholder="Digite o nome do jogador..."
+                        autocomplete="off"
                     >
-                        <source src="" type="video/mp4">
-                        Seu navegador não suporta o elemento video.
-                    </video>
-                    <!-- A overlay não é mais necessária para o blur, mas pode ser usada para um ícone de "unmute" no futuro -->
-                    <div class="video-overlay" style="display: none;">
-                        <div class="play-icon">⚽</div>
-                    </div>
+                    <div id="suggestions" class="suggestions-dropdown"></div>
                 </div>
-
-                <div class="stats-section">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value" id="statsUsed">0</div>
-                            <div class="stat-label">Tentativas Usadas</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="statsRemaining">7</div>
-                            <div class="stat-label">Tentativas Restantes</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="statsCorrect">0</div>
-                            <div class="stat-label">Acertos</div>
-                        </div>
-                    </div>
-                </div>
+                <button id="guessButton" class="guess-button">
+                    <span>Adivinhar</span>
+                </button>
             </div>
 
-            <div class="game-interface">
-                <div class="attempts-section">
-                    <div class="attempts-counter">
-                        <div class="attempts-boxes">
-                            <div class="attempt-box"></div>
-                            <div class="attempt-box"></div>
-                            <div class="attempt-box"></div>
-                            <div class="attempt-box"></div>
-                            <div class="attempt-box"></div>
-                            <div class="attempt-box"></div>
-                            <div class="attempt-box"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hints-grid">
-                    <div class="hint-item" data-hint="team">
-                        <div class="hint-label">Equipe</div>
-                        <div class="hint-value">????</div>
-                    </div>
-                    <div class="hint-item" data-hint="year">
-                        <div class="hint-label">Ano</div>
-                        <div class="hint-value">????</div>
-                    </div>
-                    <div class="hint-item" data-hint="competition">
-                        <div class="hint-label">Competição</div>
-                        <div class="hint-value">????</div>
-                    </div>
-                    <div class="hint-item" data-hint="position">
-                        <div class="hint-label">Posição</div>
-                        <div class="hint-value">????</div>
-                    </div>
-                    <div class="hint-item" data-hint="jerseyNumber">
-                        <div class="hint-label">Número</div>
-                        <div class="hint-value">????</div>
-                    </div>
-                    <div class="hint-item" data-hint="dominantFoot">
-                        <div class="hint-label">Pé Dominante</div>
-                        <div class="hint-value">????</div>
-                    </div>
-                </div>
-
-                <div class="input-section">
-                    <div class="input-container">
-                        <input 
-                            type="text" 
-                            id="playerInput" 
-                            placeholder="Digite o nome do jogador..."
-                            autocomplete="off"
-                        >
-                        <div id="suggestions" class="suggestions-dropdown"></div>
-                    </div>
-                    <button id="guessButton" class="guess-button">
-                        <span>Adivinhar</span>
-                    </button>
-                </div>
-
-                <!-- BOTÕES ATUALIZADOS: com as novas classes de estilo -->
-                <div class="game-mode-section">
-                    <button id="dailyChallengeButton" class="btn-donate btn-donate--daily">
-                        📅 Desafio Diário
-                    </button>
-                    <button id="playAgainButton" class="btn-donate btn-donate--free-play">
-                        🎮 Jogar à Vontade
-                    </button>
-                </div>
+            <!-- Bloco de Modos de Jogo -->
+            <div class="game-mode-section">
+                <button id="dailyChallengeButton" class="btn-donate btn-donate--daily">
+                    📅 Desafio Diário
+                </button>
+                <button id="playAgainButton" class="btn-donate btn-donate--free-play">
+                    🎮 Jogar à Vontade
+                </button>
             </div>
+
         </main>
     </div>
 
+    <!-- O Modal e o Card de Detalhes permanecem inalterados -->
     <div id="gameEndModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
