@@ -16,6 +16,7 @@ class FootballQuizGame {
         this.playerInput = document.getElementById('playerInput');
         this.guessButton = document.getElementById('guessButton');
         this.playAgainButton = document.getElementById('playAgainButton');
+        this.dailyChallengeButton = document.getElementById('dailyChallengeButton');
         this.statsUsed = document.getElementById('statsUsed');
         this.statsRemaining = document.getElementById('statsRemaining');
         this.statsCorrect = document.getElementById('statsCorrect');
@@ -39,6 +40,7 @@ class FootballQuizGame {
             }
         });
         this.playAgainButton.addEventListener('click', () => this.startNewGame('freeplay'));
+        this.dailyChallengeButton.addEventListener('click', () => this.startNewGame('daily'));
         
         // Debug: Log when button is clicked
         this.guessButton.addEventListener('click', () => {
@@ -80,9 +82,6 @@ class FootballQuizGame {
         this.loadVideo();
         this.updateUI();
         this.saveGameState();
-        
-        // Show play again button for freeplay mode
-        this.playAgainButton.style.display = mode === 'freeplay' ? 'block' : 'none';
     }
     
     resetUI() {
