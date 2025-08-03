@@ -87,7 +87,6 @@ class FootballQuizGame {
     
     resetUI() {
         // Reset video
-        this.videoElement.classList.add('blurred');
         this.videoElement.muted = true;
         
         // Reset attempts boxes
@@ -171,8 +170,7 @@ class FootballQuizGame {
         this.gameWon = true;
         this.gameEnded = true;
         
-        // Remove video blur and enable audio
-        this.videoElement.classList.remove('blurred');
+        // enable audio
         this.videoElement.muted = false;
         
         // Show goal details card
@@ -211,8 +209,7 @@ class FootballQuizGame {
         this.gameEnded = true;
         this.gameWon = false;
         
-        // Remove video blur
-        this.videoElement.classList.remove('blurred');
+        // enable audio
         this.videoElement.muted = false;
         
         // Disable controls
@@ -426,7 +423,6 @@ class FootballQuizGame {
         if (this.gameEnded) {
             this.playerInput.disabled = true;
             this.guessButton.disabled = true;
-            this.videoElement.classList.remove('blurred');
             this.videoElement.muted = false;
             this.showGoalDetailsCard();
         }
