@@ -14,7 +14,7 @@ const GAME_DATA = [
     },
     {
         id: 2,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/ronaldinholiberta.mp4",
         player: "Ronaldinho Gaúcho",
         team: "Atlético Mineiro",
         year: 2013,
