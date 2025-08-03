@@ -16,8 +16,6 @@ class FootballQuizGame {
         this.playerInput = document.getElementById('playerInput');
         this.guessButton = document.getElementById('guessButton');
         this.playAgainButton = document.getElementById('playAgainButton');
-        // A linha abaixo foi removida
-        // this.attemptsRemainingSpan = document.getElementById('attemptsRemaining');
         this.statsUsed = document.getElementById('statsUsed');
         this.statsRemaining = document.getElementById('statsRemaining');
         this.statsCorrect = document.getElementById('statsCorrect');
@@ -49,9 +47,9 @@ class FootballQuizGame {
     }
     
     setupAutoComplete() {
-        const playerNames = getAllPlayerNames();
+        const playerNames = window.getAllPlayerNames();
         const suggestionsElement = document.getElementById('suggestions');
-        this.autocomplete = new AutoComplete(this.playerInput, suggestionsElement, playerNames);
+        this.autocomplete = new window.AutoComplete(this.playerInput, suggestionsElement, playerNames);
     }
     
     loadGame() {
@@ -71,7 +69,7 @@ class FootballQuizGame {
     
     startNewGame(mode = 'daily') {
         this.gameMode = mode;
-        this.currentGoal = mode === 'daily' ? getDailyGoal() : getRandomGoal();
+        this.currentGoal = mode === 'daily' ? window.getDailyGoal() : window.getRandomGoal();
         this.attemptsUsed = 0;
         this.hintsRevealed = 0;
         this.gameEnded = false;
@@ -261,8 +259,6 @@ class FootballQuizGame {
     
     updateUI() {
         const attemptsRemaining = this.maxAttempts - this.attemptsUsed;
-        // A linha abaixo foi removida
-        // this.attemptsRemainingSpan.textContent = attemptsRemaining;
         this.statsUsed.textContent = this.attemptsUsed;
         this.statsRemaining.textContent = attemptsRemaining;
         
@@ -406,7 +402,7 @@ class FootballQuizGame {
     }
     
     loadGameState(gameState) {
-        this.currentGoal = GAME_DATA.find(goal => goal.id === gameState.goalId);
+        this.currentGoal = window.GAME_DATA.find(goal => goal.id === gameState.goalId);
         this.attemptsUsed = gameState.attemptsUsed;
         this.hintsRevealed = gameState.hintsRevealed;
         this.gameEnded = gameState.gameEnded;
@@ -462,7 +458,8 @@ class FootballQuizGame {
     }
 }
 
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { FootballQuizGame };
-}
+// Export for ES modules
+export { FootballQuizGame };
+
+// Keep global for backward compatibility
+window.FootballQuizGame = FootballQuizGame;

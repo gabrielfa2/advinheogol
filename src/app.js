@@ -1,3 +1,9 @@
+// Import all modules to ensure they're included in the build
+import './gameData.js';
+import './autocomplete.js';
+import './gameLogic.js';
+import './modal.js';
+
 // Main application initialization
 class App {
     constructor() {
@@ -21,11 +27,11 @@ class App {
             console.log('Initializing app...');
             
             // Initialize game
-            this.game = new FootballQuizGame();
+            this.game = new window.FootballQuizGame();
             console.log('Game initialized');
             
             // Initialize modal
-            this.modal = new GameModal(this.game);
+            this.modal = new window.GameModal(this.game);
             console.log('Modal initialized');
             
             // Add any additional app-level functionality
@@ -158,8 +164,14 @@ class App {
     }
 }
 
-// Initialize the application
-const app = new App();
+// Initialize the application when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing app...');
+    const app = new App();
+    
+    // Make app globally available for debugging
+    window.AdivinheOGol = app;
+});
 
-// Make app globally available for debugging
-window.AdivinheOGol = app;
+// Export for ES modules
+export { App };

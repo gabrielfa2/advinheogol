@@ -138,7 +138,10 @@ function getDailyGoal() {
     return GAME_DATA[goalIndex];
 }
 
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { GAME_DATA, getRandomGoal, getDailyGoal };
-}
+// Export for ES modules
+export { GAME_DATA, getRandomGoal, getDailyGoal };
+
+// Keep global variables for backward compatibility
+window.GAME_DATA = GAME_DATA;
+window.getRandomGoal = getRandomGoal;
+window.getDailyGoal = getDailyGoal;

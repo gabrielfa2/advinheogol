@@ -150,7 +150,8 @@ class GameModal {
     }
 }
 
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { GameModal };
-}
+// Export for ES modules
+export { GameModal };
+
+// Keep global for backward compatibility
+window.GameModal = GameModal;

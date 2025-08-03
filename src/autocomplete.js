@@ -129,10 +129,12 @@ class AutoComplete {
 
 // Extract all unique player names from game data
 function getAllPlayerNames() {
-    return [...new Set(GAME_DATA.map(goal => goal.player))].sort();
+    return [...new Set(window.GAME_DATA.map(goal => goal.player))].sort();
 }
 
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { AutoComplete, getAllPlayerNames };
-}
+// Export for ES modules
+export { AutoComplete, getAllPlayerNames };
+
+// Keep global for backward compatibility
+window.AutoComplete = AutoComplete;
+window.getAllPlayerNames = getAllPlayerNames;

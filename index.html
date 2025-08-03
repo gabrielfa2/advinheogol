@@ -147,25 +147,6 @@
         </div>
     </div>
 
-    <script src="gameData.js"></script>
-    <script src="autocomplete.js"></script>
-    <script src="gameLogic.js"></script>
-    <script src="modal.js"></script>
-    <script src="app.js"></script>
-    
-    <!-- Initialize the app after all scripts are loaded -->
-    <script>
-        // Ensure all scripts are loaded before initializing
-        document.addEventListener('DOMContentLoaded', function() {
-            // Small delay to ensure all scripts are fully parsed
-            setTimeout(() => {
-                if (typeof App !== 'undefined') {
-                    window.gameApp = new App();
-                } else {
-                    console.error('App class not found');
-                }
-            }, 100);
-        });
-    </script>
+    <script type="module" src="/src/app.js"></script>
 </body>
 </html>
