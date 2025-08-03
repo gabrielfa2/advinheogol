@@ -1,6 +1,7 @@
 // Main application initialization
 class App {
     constructor() {
+        console.log('App constructor called');
         this.game = null;
         this.modal = null;
         this.init();
@@ -17,11 +18,15 @@ class App {
     
     initialize() {
         try {
+            console.log('Initializing app...');
+            
             // Initialize game
             this.game = new FootballQuizGame();
+            console.log('Game initialized');
             
             // Initialize modal
             this.modal = new GameModal(this.game);
+            console.log('Modal initialized');
             
             // Add any additional app-level functionality
             this.setupGlobalEventListeners();

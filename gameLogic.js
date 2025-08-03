@@ -33,6 +33,7 @@ class FootballQuizGame {
     }
     
     setupEventListeners() {
+        console.log('Setting up event listeners');
         this.guessButton.addEventListener('click', () => this.makeGuess());
         this.playerInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -40,6 +41,11 @@ class FootballQuizGame {
             }
         });
         this.playAgainButton.addEventListener('click', () => this.startNewGame('freeplay'));
+        
+        // Debug: Log when button is clicked
+        this.guessButton.addEventListener('click', () => {
+            console.log('Guess button clicked');
+        });
     }
     
     setupAutoComplete() {
@@ -109,17 +115,35 @@ class FootballQuizGame {
     }
     
     loadVideo() {
+        console.log('Loading video:', this.currentGoal.videoUrl);
         this.videoElement.src = this.currentGoal.videoUrl;
         this.videoElement.load();
+        
+        // Add error handling for video loading
+        this.videoElement.addEventListener('error', (e) => {
+            console.error('Video loading error:', e);
+            console.error('Video URL:', this.currentGoal.videoUrl);
+        });
+        
+        this.videoElement.addEventListener('loadeddata', () => {
+            console.log('Video loaded successfully');
+        });
     }
     
     makeGuess() {
+        console.log('makeGuess called');
         if (this.gameEnded) return;
         
         const guess = this.playerInput.value.trim();
-        if (!guess) return;
+        if (!guess) {
+            console.log('Empty guess');
+            return;
+        }
+        
+        console.log('Guess:', guess, 'Correct answer:', this.currentGoal.player);
         
         const isCorrect = guess.toLowerCase() === this.currentGoal.player.toLowerCase();
+        console.log('Is correct:', isCorrect);
         
         this.attemptsUsed++;
         this.updateAttemptBox(isCorrect);
