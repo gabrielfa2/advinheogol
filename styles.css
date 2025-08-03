@@ -91,12 +91,10 @@ body::before {
     height: auto;
     min-height: 300px;
     object-fit: cover;
-    transition: filter 0.8s ease-in-out;
+    /* A transição não é mais necessária pois o blur foi removido */
 }
 
-.game-video.blurred {
-    filter: blur(20px);
-}
+/* A classe de blur foi removida */
 
 .video-overlay {
     position: absolute;
@@ -109,11 +107,6 @@ body::before {
     justify-content: center;
     background: rgba(0, 0, 0, 0.3);
     transition: opacity 0.3s ease;
-}
-
-.game-video:not(.blurred) + .video-overlay {
-    opacity: 0;
-    pointer-events: none;
 }
 
 .play-icon {
@@ -354,54 +347,64 @@ body::before {
     left: 100%;
 }
 
-/* Game Mode Section --- ALTERAÇÕES APLICADAS AQUI --- */
+/* Game Mode Section --- NOVOS ESTILOS APLICADOS --- */
 .game-mode-section {
     display: flex;
     gap: 16px;
     margin-bottom: 32px;
 }
 
-.game-mode-button {
-    flex: 1;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid;
-    border-radius: 8px;
+.btn-donate {
+    --btn-bg-color: hsla(360 100% 100% / 1);
+    --radii: 0.5em;
+
+    flex: 1; /* Garante que os botões tenham o mesmo tamanho */
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
+    padding: 0.9em 1.4em;
+    min-width: 120px;
+    min-height: 44px;
+    font-size: var(--size, 1rem);
+    font-family: 'Inter', sans-serif; /* Garante a mesma fonte */
+    font-weight: 600; /* Ajustado para um visual mais forte */
+    transition: 0.8s;
+    background-size: 280% auto;
+    background-image: linear-gradient(325deg,
+        var(--btn-bg-2) 0%,
+        var(--btn-bg-1) 55%,
+        var(--btn-bg-2) 90%);
+    border: none;
+    border-radius: var(--radii);
+    color: var(--btn-bg-color);
+    box-shadow:
+        0px 0px 20px var(--shadow-color, rgba(0, 0, 0, 0)),
+        0px 5px 5px -1px var(--shadow-color, rgba(0, 0, 0, 0)),
+        inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+        inset -4px -4px 8px rgba(0, 0, 0, 0.35);
 }
 
-.game-mode-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.btn-donate:hover {
+    background-position: right top;
 }
 
-/* Estilo para o botão "Desafio Diário" (Verde) */
-.daily-button {
-    background: rgba(34, 197, 94, 0.15);
-    color: #22c55e;
-    border-color: #22c55e;
+.btn-donate:is(:focus, :focus-visible, :active) {
+    outline: none;
+    box-shadow:
+        0 0 0 3px var(--btn-bg-color),
+        0 0 0 6px var(--btn-bg-2);
 }
 
-.daily-button:hover {
-    background: rgba(34, 197, 94, 0.3);
-    color: #ffffff;
+/* Cores para o botão de Desafio Diário (Verde) */
+.btn-donate--daily {
+    --btn-bg-1: hsl(145, 63%, 49%);
+    --btn-bg-2: hsl(145, 63%, 35%);
+    --shadow-color: rgba(34, 197, 94, 0.5);
 }
 
-/* Estilo para o botão "Jogar à Vontade" (Azul) */
-.free-play-button {
-    background: rgba(59, 130, 246, 0.15);
-    color: #3b82f6;
-    border-color: #3b82f6;
-}
-
-.free-play-button:hover {
-    background: rgba(59, 130, 246, 0.3);
-    color: #ffffff;
+/* Cores para o botão de Jogar à Vontade (Azul) */
+.btn-donate--free-play {
+    --btn-bg-1: hsla(194, 100%, 69%, 1);
+    --btn-bg-2: hsla(217, 100%, 56%, 1);
+    --shadow-color: rgba(71, 184, 255, 0.5);
 }
 
 
@@ -786,6 +789,10 @@ body::before {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .btn-donate {
+        transition: linear;
     }
 }
 
