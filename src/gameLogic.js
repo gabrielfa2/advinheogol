@@ -232,8 +232,10 @@ class FootballQuizGame {
         
         this.goalDetailsCard.style.display = 'block';
 
-        // Immediately check visibility based on current viewport and scroll
-        this.handleCardVisibility();
+        // UPDATED: Use a timeout to ensure the animation triggers correctly
+        setTimeout(() => {
+            this.handleCardVisibility();
+        }, 10);
     }
     
     updateUI() {
