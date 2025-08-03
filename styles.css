@@ -94,6 +94,39 @@ body::before {
     transition: filter 0.8s ease-in-out;
 }
 
+.game-video.blurred {
+    filter: blur(20px);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+}
+
+.game-video:not(.blurred) + .video-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.play-icon {
+    font-size: 64px;
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
 /* Game Interface */
 .game-interface {
     flex: 1;
@@ -321,59 +354,54 @@ body::before {
     left: 100%;
 }
 
-/* Game Mode Section */
+/* Game Mode Section --- ALTERAÇÕES APLICADAS AQUI --- */
 .game-mode-section {
-    text-align: center;
+    display: flex;
+    gap: 16px;
     margin-bottom: 32px;
 }
 
-.game-mode-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+.game-mode-button {
+    flex: 1;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
 }
 
-/* Base style for new buttons */
-.shadow__btn {
-  padding: 10px 20px;
-  border: none;
-  font-size: 17px;
-  color: #fff;
-  border-radius: 7px;
-  letter-spacing: 4px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 0.5s;
-  transition-property: box-shadow;
-  cursor: pointer;
+.game-mode-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Blue button for "Jogar à Vontade" */
-.shadow__btn--blue {
-  background: rgb(0,140,255);
-  box-shadow: 0 0 25px rgb(0,140,255);
+/* Estilo para o botão "Desafio Diário" (Verde) */
+.daily-button {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-color: #22c55e;
 }
 
-.shadow__btn--blue:hover {
-  box-shadow: 0 0 5px rgb(0,140,255),
-              0 0 25px rgb(0,140,255),
-              0 0 50px rgb(0,140,255),
-              0 0 100px rgb(0,140,255);
+.daily-button:hover {
+    background: rgba(34, 197, 94, 0.3);
+    color: #ffffff;
 }
 
-/* Green button for "Desafio Diário" */
-.shadow__btn--green {
-  background: #16a34a; /* Cor base do tema */
-  box-shadow: 0 0 25px #16a34a;
+/* Estilo para o botão "Jogar à Vontade" (Azul) */
+.free-play-button {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border-color: #3b82f6;
 }
 
-.shadow__btn--green:hover {
-  box-shadow: 0 0 5px #22c55e,
-              0 0 25px #22c55e,
-              0 0 50px #22c55e,
-              0 0 100px #22c55e;
+.free-play-button:hover {
+    background: rgba(59, 130, 246, 0.3);
+    color: #ffffff;
 }
 
 
