@@ -330,8 +330,9 @@ body::before {
 .game-mode-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 16px;
-    flex-wrap: wrap; /* Adicionado para melhor responsividade */
+    flex-wrap: wrap;
 }
 
 /* Base style for new buttons */
