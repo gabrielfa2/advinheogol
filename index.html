@@ -17,10 +17,13 @@
         <main class="main-content">
             <div class="left-column">
                 <div class="video-container">
-                    <video id="gameVideo" class="game-video" loop autoplay muted playsinline preload="auto">
+                    <video id="gameVideo" class="game-video blurred" loop muted>
                         <source src="" type="video/mp4">
                         Seu navegador não suporta o elemento video.
                     </video>
+                    <div class="video-overlay">
+                        <div class="play-icon">⚽</div>
+                    </div>
                 </div>
 
                 <div class="stats-section">
@@ -97,16 +100,14 @@
                         <span>Adivinhar</span>
                     </button>
                 </div>
+
                 <div class="game-mode-section">
-                    <div class="game-mode-buttons">
-                        <button id="dailyChallengeButton" class="shadow__btn shadow__btn--green">
-                            Desafio Diário
-                        </button>
-                        <button id="playAgainButton" class="shadow__btn shadow__btn--blue">
-                            Jogar à Vontade
-                        </button>
-                    </div>
-                </div>
+                    <button id="dailyChallengeButton" class="game-mode-button daily-button">
+                        📅 Desafio Diário
+                    </button>
+                    <button id="playAgainButton" class="game-mode-button free-play-button">
+                        🎮 Jogar à Vontade
+                    </button>
                 </div>
             </div>
         </main>
