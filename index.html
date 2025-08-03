@@ -14,10 +14,8 @@
             <h1 class="title">Adivinhe o G<span class="emoji-ball">⚽</span>l</h1>
         </header>
 
-        <!-- ESTRUTURA DO MAIN ATUALIZADA PARA PERMITIR REORDENAMENTO -->
         <main class="main-content">
 
-            <!-- Bloco de Tentativas (movido para ser um filho direto) -->
             <div class="attempts-section">
                 <div class="attempts-counter">
                     <div class="attempts-boxes">
@@ -32,7 +30,6 @@
                 </div>
             </div>
 
-            <!-- Bloco do Vídeo -->
             <div class="video-container">
                 <video 
                     id="gameVideo" 
@@ -51,7 +48,6 @@
                 </div>
             </div>
 
-            <!-- Bloco de Estatísticas -->
             <div class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-item">
@@ -69,7 +65,6 @@
                 </div>
             </div>
 
-            <!-- Bloco de Dicas -->
             <div class="hints-grid">
                 <div class="hint-item" data-hint="team">
                     <div class="hint-label">Equipe</div>
@@ -97,7 +92,6 @@
                 </div>
             </div>
 
-            <!-- Bloco de Input -->
             <div class="input-section">
                 <div class="input-container">
                     <input 
@@ -113,7 +107,6 @@
                 </button>
             </div>
 
-            <!-- Bloco de Modos de Jogo -->
             <div class="game-mode-section">
                 <button id="dailyChallengeButton" class="btn-donate btn-donate--daily">
                     📅 Desafio Diário
@@ -126,7 +119,6 @@
         </main>
     </div>
 
-    <!-- O Modal e o Card de Detalhes permanecem inalterados -->
     <div id="gameEndModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -163,6 +155,14 @@
             </div>
         </div>
     </div>
+
+    <!-- NOVO RODAPÉ ADICIONADO AQUI -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Adivinhe o Gol. Todos os direitos reservados.</p>
+            <p>Um jogo para testar seus conhecimentos sobre futebol.</p>
+        </div>
+    </footer>
 
     <script type="module" src="/src/app.js"></script>
 </body>
