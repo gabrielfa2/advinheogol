@@ -380,12 +380,12 @@ body::before {
         gap: 24px; /* Espaçamento ajustado para mobile */
     }
 
-    /* REORDENANDO OS ELEMENTOS PARA MOBILE */
+    /* REORDENANDO OS ELEMENTOS PARA MOBILE (ORDEM CORRIGIDA) */
     .attempts-section   { order: 1; }
     .video-container    { order: 2; }
     .input-section      { order: 3; }
-    .game-mode-section  { order: 4; }
-    .hints-grid         { order: 5; }
+    .hints-grid         { order: 4; } /* Dicas agora vêm antes */
+    .game-mode-section  { order: 5; } /* Botões de modo agora vêm por último */
     
     /* Escondendo a seção de estatísticas no mobile */
     .stats-section      { display: none; }
