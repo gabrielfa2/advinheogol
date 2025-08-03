@@ -488,15 +488,15 @@ body::before {
 .card-content p { color: #d1d5db; font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
 .card-meta { font-size: 12px; color: #9ca3af; font-weight: 500; }
 
-/* --- NOVO RODAPÉ --- */
+/* --- RODAPÉ ATUALIZADO --- */
 .site-footer {
     width: 100%;
     padding: 32px 16px;
-    margin-top: auto; /* Garante que o rodapé fique no final */
+    margin-top: auto;
     text-align: center;
     color: #9ca3af;
-    border-top: 1px solid #374151;
-    background-color: #111827;
+    border-top: 1px solid rgba(34, 197, 94, 0.2); /* Borda sutil com a cor do tema */
+    background-color: #0c0c0c; /* Cor de fundo escura para combinar com o corpo */
 }
 
 .footer-content p {
@@ -507,6 +507,7 @@ body::before {
 
 .footer-content p:first-child {
     font-weight: 500;
+    color: #e5e7eb; /* Cor um pouco mais clara para o copyright */
     margin-bottom: 8px;
 }
 
