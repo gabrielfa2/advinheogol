@@ -171,6 +171,7 @@ class FootballQuizGame {
         this.gameWon = true;
         this.gameEnded = true;
         this.videoElement.muted = false;
+        this.revealAllHints(); // <-- ALTERAÇÃO APLICADA AQUI
         this.showGoalDetailsCard();
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
@@ -209,6 +210,11 @@ class FootballQuizGame {
             hintValue.textContent = this.currentGoal[hintType];
             hintItem.classList.add('revealed');
         }
+    }
+
+    // NOVA FUNÇÃO para revelar todas as dicas de uma vez
+    revealAllHints() {
+        this.hintSequence.forEach(hintType => this.revealHint(hintType));
     }
     
     showGoalDetailsCard() {
