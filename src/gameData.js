@@ -7,10 +7,10 @@ const GAME_DATA = [
         team: "Corinthians",
         year: 2009,
         competition: "Campeonato Paulista",
-        position: "Avançado",
+        position: "Atacante",
         jerseyNumber: 9,
         dominantFoot: "Direito",
-        description: "Um golo icónico de cobertura contra o Santos na final do Paulistão, demonstrando a classe e experiência do fenómeno brasileiro."
+        description: "Um gol icónico de cobertura contra o Santos na final do Paulistão, demonstrando a classe e experiência do fenómeno brasileiro."
     },
     {
         id: 2,
@@ -19,10 +19,10 @@ const GAME_DATA = [
         team: "Atlético Mineiro",
         year: 2013,
         competition: "Copa Libertadores",
-        position: "Médio Ofensivo",
+        position: "Meia-Atacante",
         jerseyNumber: 10,
         dominantFoot: "Direito",
-        description: "Um golo de livre magistral que ajudou o Atlético a conquistar a Libertadores, mostrando toda a magia do craque gaúcho."
+        description: "Um gol de livre magistral que ajudou o Atlético a conquistar a Libertadores, mostrando toda a magia do craque gaúcho."
     },
     {
         id: 3,
@@ -31,10 +31,10 @@ const GAME_DATA = [
         team: "Brasil",
         year: 1970,
         competition: "Copa do Mundo",
-        position: "Avançado",
+        position: "Atacante",
         jerseyNumber: 10,
         dominantFoot: "Direito",
-        description: "O golo do século na final da Copa do Mundo de 1970, consolidando Pelé como o maior jogador de todos os tempos."
+        description: "O gol do século na final da Copa do Mundo de 1970, consolidando Pelé como o maior jogador de todos os tempos."
     },
     {
         id: 4,
@@ -43,10 +43,10 @@ const GAME_DATA = [
         team: "Barcelona",
         year: 1994,
         competition: "La Liga",
-        position: "Avançado",
+        position: "Atacante",
         jerseyNumber: 11,
         dominantFoot: "Direito",
-        description: "Um golo de oportunismo puro do baixinho, demonstrando sua capacidade de finalização dentro da área."
+        description: "Um gol de oportunismo puro do baixinho, demonstrando sua capacidade de finalização dentro da área."
     },
     {
         id: 5,
@@ -55,7 +55,7 @@ const GAME_DATA = [
         team: "Flamengo",
         year: 1981,
         competition: "Copa Libertadores",
-        position: "Médio Ofensivo",
+        position: "Meio-Campista",
         jerseyNumber: 10,
         dominantFoot: "Direito",
         description: "Livre direto perfeito do Galinho de Quintino, um dos seus muitos golazos pelo Mengão na conquista da Libertadores."
@@ -67,10 +67,10 @@ const GAME_DATA = [
         team: "Milan",
         year: 2007,
         competition: "Champions League",
-        position: "Médio Ofensivo",
+        position: "Meio-Campista",
         jerseyNumber: 22,
         dominantFoot: "Direito",
-        description: "Golo espetacular do craque brasileiro na semifinal da Champions, mostrando velocidade e precisão na finalização."
+        description: "Gol espetacular do craque brasileiro na semifinal da Champions, mostrando velocidade e precisão na finalização."
     },
     {
         id: 7,
@@ -79,7 +79,7 @@ const GAME_DATA = [
         team: "Barcelona",
         year: 2001,
         competition: "La Liga",
-        position: "Médio Ofensivo",
+        position: "Meia-Atacante",
         jerseyNumber: 10,
         dominantFoot: "Esquerdo",
         description: "Hat-trick histórico contra o Valencia, com o último golo sendo uma bicicleta antológica que garantiu a vaga na Champions."
@@ -91,10 +91,10 @@ const GAME_DATA = [
         team: "Deportivo",
         year: 1992,
         competition: "La Liga",
-        position: "Avançado",
+        position: "Atacante",
         jerseyNumber: 11,
         dominantFoot: "Direito",
-        description: "Golo decisivo na conquista histórica do campeonato espanhol pelo Deportivo, demonstrando a categoria do atacante brasileiro."
+        description: "Gol decisivo na conquista histórica do campeonato espanhol pelo Deportivo, demonstrando a categoria do atacante brasileiro."
     },
     {
         id: 9,
@@ -103,10 +103,10 @@ const GAME_DATA = [
         team: "Brasil",
         year: 1962,
         competition: "Copa do Mundo",
-        position: "Extremo Direito",
+        position: "Ponta Direita",
         jerseyNumber: 7,
         dominantFoot: "Direito",
-        description: "Golo mágico do Anjo das Pernas Tortas na Copa do Mundo do Chile, driblando meio time adversário antes de finalizar."
+        description: "Gol mágico do Anjo das Pernas Tortas na Copa do Mundo do Chile, driblando meio time adversário antes de finalizar."
     },
     {
         id: 10,
@@ -115,10 +115,10 @@ const GAME_DATA = [
         team: "Santos",
         year: 2011,
         competition: "Copa Libertadores",
-        position: "Extremo Esquerdo",
+        position: "Ponta Esquerda",
         jerseyNumber: 11,
         dominantFoot: "Direito",
-        description: "Golo antológico do jovem craque santista, mostrando dribles desconcertantes e finalização perfeita na conquista da Libertadores."
+        description: "Gol antológico do jovem craque santista, mostrando dribles desconcertantes e finalização perfeita na conquista da Libertadores."
     }
 ];
 
