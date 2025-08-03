@@ -15,8 +15,10 @@ class FootballQuizGame {
         this.videoElement = document.getElementById('gameVideo');
         this.playerInput = document.getElementById('playerInput');
         this.guessButton = document.getElementById('guessButton');
+        // We now have two mode buttons, so we'll get them by their IDs if needed
         this.playAgainButton = document.getElementById('playAgainButton');
         this.dailyChallengeButton = document.getElementById('dailyChallengeButton');
+
         this.statsUsed = document.getElementById('statsUsed');
         this.statsRemaining = document.getElementById('statsRemaining');
         this.statsCorrect = document.getElementById('statsCorrect');
@@ -39,6 +41,7 @@ class FootballQuizGame {
                 this.makeGuess();
             }
         });
+        // Event listeners for the new buttons
         this.playAgainButton.addEventListener('click', () => this.startNewGame('freeplay'));
         this.dailyChallengeButton.addEventListener('click', () => this.startNewGame('daily'));
         
@@ -60,8 +63,9 @@ class FootballQuizGame {
         const lastPlayed = localStorage.getItem('lastPlayedDate');
         const savedGameState = localStorage.getItem('gameState');
         
-        if (this.gameMode === 'daily' && lastPlayed === today && savedGameState) {
-            // Load saved game state
+        // Default to daily mode
+        if (lastPlayed === today && savedGameState) {
+            // Load saved game state for the daily challenge
             this.loadGameState(JSON.parse(savedGameState));
         } else {
             // Start new daily game
@@ -85,8 +89,8 @@ class FootballQuizGame {
     }
     
     resetUI() {
-        // Reset video
-        this.videoElement.muted = true;
+        // Reset video - NO LONGER BLURRED
+        this.videoElement.muted = true; // Still start muted
         
         // Reset attempts boxes
         const attemptBoxes = document.querySelectorAll('.attempt-box');
@@ -121,8 +125,12 @@ class FootballQuizGame {
             console.error('Video URL:', this.currentGoal.videoUrl);
         });
         
+        // Play video as soon as it's ready
         this.videoElement.addEventListener('loadeddata', () => {
-            console.log('Video loaded successfully');
+            console.log('Video loaded successfully, attempting to play.');
+            // Start muted to comply with autoplay policies
+            this.videoElement.muted = true; 
+            this.videoElement.play().catch(e => console.error('Video autoplay failed:', e));
         });
     }
     
@@ -169,7 +177,7 @@ class FootballQuizGame {
         this.gameWon = true;
         this.gameEnded = true;
         
-        // enable audio
+        // Unmute video on correct guess
         this.videoElement.muted = false;
         
         // Show goal details card
@@ -208,7 +216,7 @@ class FootballQuizGame {
         this.gameEnded = true;
         this.gameWon = false;
         
-        // enable audio
+        // Unmute video
         this.videoElement.muted = false;
         
         // Disable controls
@@ -422,7 +430,7 @@ class FootballQuizGame {
         if (this.gameEnded) {
             this.playerInput.disabled = true;
             this.guessButton.disabled = true;
-            this.videoElement.muted = false;
+            this.videoElement.muted = false; // Unmute video
             this.showGoalDetailsCard();
         }
         
