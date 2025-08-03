@@ -2,7 +2,7 @@
 const GAME_DATA = [
     {
         id: 1,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/lanceronaldo.mp4",
         player: "Ronaldo",
         team: "Corinthians",
         year: 2009,
