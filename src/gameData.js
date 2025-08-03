@@ -2,7 +2,7 @@
 const GAME_DATA = [
     {
         id: 1,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Ronaldo",
         team: "Corinthians",
         year: 2009,
@@ -14,7 +14,7 @@ const GAME_DATA = [
     },
     {
         id: 2,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Ronaldinho Gaúcho",
         team: "Atlético Mineiro",
         year: 2013,
@@ -26,7 +26,7 @@ const GAME_DATA = [
     },
     {
         id: 3,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Pelé",
         team: "Brasil",
         year: 1970,
@@ -38,7 +38,7 @@ const GAME_DATA = [
     },
     {
         id: 4,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Romário",
         team: "Barcelona",
         year: 1994,
@@ -50,7 +50,7 @@ const GAME_DATA = [
     },
     {
         id: 5,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Zico",
         team: "Flamengo",
         year: 1981,
@@ -62,7 +62,7 @@ const GAME_DATA = [
     },
     {
         id: 6,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Kaká",
         team: "Milan",
         year: 2007,
@@ -74,7 +74,7 @@ const GAME_DATA = [
     },
     {
         id: 7,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Rivaldo",
         team: "Barcelona",
         year: 2001,
@@ -86,7 +86,7 @@ const GAME_DATA = [
     },
     {
         id: 8,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Bebeto",
         team: "Deportivo",
         year: 1992,
@@ -98,7 +98,7 @@ const GAME_DATA = [
     },
     {
         id: 9,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Garrincha",
         team: "Brasil",
         year: 1962,
@@ -110,7 +110,7 @@ const GAME_DATA = [
     },
     {
         id: 10,
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
         player: "Neymar",
         team: "Santos",
         year: 2011,
