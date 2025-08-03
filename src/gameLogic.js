@@ -48,7 +48,6 @@ class FootballQuizGame {
         window.addEventListener('resize', () => this.handleCardVisibility());
     }
     
-    // UPDATED: Function now applies the same scroll logic to all screen sizes
     handleCardVisibility() {
         // Only manage visibility if the game has ended
         if (!this.gameEnded) {
@@ -134,6 +133,14 @@ class FootballQuizGame {
             this.videoElement.play().catch(e => console.error('Video autoplay failed:', e));
         });
     }
+
+    // NOVA FUNÇÃO para normalizar strings (remover acentos e converter para minúsculas)
+    normalizeString(str) {
+        return str
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+    }
     
     makeGuess() {
         if (this.gameEnded) return;
@@ -141,7 +148,10 @@ class FootballQuizGame {
         const guess = this.playerInput.value.trim();
         if (!guess) return;
         
-        const isCorrect = guess.toLowerCase() === this.currentGoal.player.toLowerCase();
+        // LÓGICA DE COMPARAÇÃO ATUALIZADA
+        const normalizedGuess = this.normalizeString(guess);
+        const normalizedAnswer = this.normalizeString(this.currentGoal.player);
+        const isCorrect = normalizedGuess === normalizedAnswer;
         
         this.attemptsUsed++;
         this.updateAttemptBox(isCorrect);
@@ -171,7 +181,7 @@ class FootballQuizGame {
         this.gameWon = true;
         this.gameEnded = true;
         this.videoElement.muted = false;
-        this.revealAllHints(); // <-- ALTERAÇÃO APLICADA AQUI
+        this.revealAllHints();
         this.showGoalDetailsCard();
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
@@ -212,7 +222,6 @@ class FootballQuizGame {
         }
     }
 
-    // NOVA FUNÇÃO para revelar todas as dicas de uma vez
     revealAllHints() {
         this.hintSequence.forEach(hintType => this.revealHint(hintType));
     }
