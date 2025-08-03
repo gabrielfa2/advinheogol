@@ -48,24 +48,18 @@ class FootballQuizGame {
         window.addEventListener('resize', () => this.handleCardVisibility());
     }
     
-    // UPDATED: Function now handles both desktop and mobile logic
+    // UPDATED: Function now applies the same scroll logic to all screen sizes
     handleCardVisibility() {
         // Only manage visibility if the game has ended
         if (!this.gameEnded) {
             return;
         }
 
-        // Check if the viewport is desktop size (e.g., wider than 1024px)
-        if (window.innerWidth > 1024) {
-            // On desktop, the card should always be visible
+        // Apply scroll-based logic for all screen sizes
+        if (window.scrollY > 20) {
             this.goalDetailsCard.classList.add('is-visible');
         } else {
-            // On mobile, use the scroll-based logic
-            if (window.scrollY > 20) {
-                this.goalDetailsCard.classList.add('is-visible');
-            } else {
-                this.goalDetailsCard.classList.remove('is-visible');
-            }
+            this.goalDetailsCard.classList.remove('is-visible');
         }
     }
 
@@ -232,7 +226,7 @@ class FootballQuizGame {
         
         this.goalDetailsCard.style.display = 'block';
 
-        // UPDATED: Use a timeout to ensure the animation triggers correctly
+        // Use a timeout to ensure the animation triggers correctly
         setTimeout(() => {
             this.handleCardVisibility();
         }, 10);
