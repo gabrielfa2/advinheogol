@@ -15,13 +15,12 @@ class FootballQuizGame {
         this.videoElement = document.getElementById('gameVideo');
         this.playerInput = document.getElementById('playerInput');
         this.guessButton = document.getElementById('guessButton');
-        // We now have two mode buttons, so we'll get them by their IDs if needed
         this.playAgainButton = document.getElementById('playAgainButton');
         this.dailyChallengeButton = document.getElementById('dailyChallengeButton');
-
         this.statsUsed = document.getElementById('statsUsed');
         this.statsRemaining = document.getElementById('statsRemaining');
         this.statsCorrect = document.getElementById('statsCorrect');
+        this.goalDetailsCard = document.getElementById('goalDetailsCard'); // Get card element
         
         this.init();
     }
@@ -41,16 +40,29 @@ class FootballQuizGame {
                 this.makeGuess();
             }
         });
-        // Event listeners for the new buttons
         this.playAgainButton.addEventListener('click', () => this.startNewGame('freeplay'));
         this.dailyChallengeButton.addEventListener('click', () => this.startNewGame('daily'));
         
-        // Debug: Log when button is clicked
-        this.guessButton.addEventListener('click', () => {
-            console.log('Guess button clicked');
-        });
+        // NEW: Scroll listener for the details card
+        window.addEventListener('scroll', () => this.handleCardVisibilityOnScroll());
     }
     
+    // NEW: Function to handle card visibility based on scroll
+    handleCardVisibilityOnScroll() {
+        // Only manage visibility if the game has ended and the card should be shown
+        if (!this.gameEnded) {
+            return;
+        }
+
+        if (window.scrollY > 20) {
+            // If user scrolls down, make the card visible
+            this.goalDetailsCard.classList.add('is-visible');
+        } else {
+            // If user is at the top of the page, hide the card
+            this.goalDetailsCard.classList.remove('is-visible');
+        }
+    }
+
     setupAutoComplete() {
         const playerNames = window.getAllPlayerNames();
         const suggestionsElement = document.getElementById('suggestions');
@@ -58,17 +70,13 @@ class FootballQuizGame {
     }
     
     loadGame() {
-        // Check if it's a new day for daily mode
         const today = new Date().toDateString();
         const lastPlayed = localStorage.getItem('lastPlayedDate');
         const savedGameState = localStorage.getItem('gameState');
         
-        // Default to daily mode
         if (lastPlayed === today && savedGameState) {
-            // Load saved game state for the daily challenge
             this.loadGameState(JSON.parse(savedGameState));
         } else {
-            // Start new daily game
             this.startNewGame('daily');
         }
     }
@@ -81,7 +89,6 @@ class FootballQuizGame {
         this.gameEnded = false;
         this.gameWon = false;
         
-        // Reset UI
         this.resetUI();
         this.loadVideo();
         this.updateUI();
@@ -89,29 +96,26 @@ class FootballQuizGame {
     }
     
     resetUI() {
-        // Reset video - NO LONGER BLURRED
-        this.videoElement.muted = true; // Still start muted
+        this.videoElement.muted = true;
         
-        // Reset attempts boxes
         const attemptBoxes = document.querySelectorAll('.attempt-box');
         attemptBoxes.forEach(box => {
             box.classList.remove('used', 'correct');
         });
         
-        // Reset hints
         const hintItems = document.querySelectorAll('.hint-item');
         hintItems.forEach(item => {
             item.classList.remove('revealed');
             item.querySelector('.hint-value').textContent = '????';
         });
         
-        // Reset input
         this.playerInput.value = '';
         this.playerInput.disabled = false;
         this.guessButton.disabled = false;
         
-        // Hide goal details card
-        document.getElementById('goalDetailsCard').style.display = 'none';
+        // Hide and reset the card state
+        this.goalDetailsCard.style.display = 'none';
+        this.goalDetailsCard.classList.remove('is-visible');
     }
     
     loadVideo() {
@@ -119,35 +123,25 @@ class FootballQuizGame {
         this.videoElement.src = this.currentGoal.videoUrl;
         this.videoElement.load();
         
-        // Add error handling for video loading
         this.videoElement.addEventListener('error', (e) => {
             console.error('Video loading error:', e);
             console.error('Video URL:', this.currentGoal.videoUrl);
         });
         
-        // Play video as soon as it's ready
         this.videoElement.addEventListener('loadeddata', () => {
             console.log('Video loaded successfully, attempting to play.');
-            // Start muted to comply with autoplay policies
             this.videoElement.muted = true; 
             this.videoElement.play().catch(e => console.error('Video autoplay failed:', e));
         });
     }
     
     makeGuess() {
-        console.log('makeGuess called');
         if (this.gameEnded) return;
         
         const guess = this.playerInput.value.trim();
-        if (!guess) {
-            console.log('Empty guess');
-            return;
-        }
-        
-        console.log('Guess:', guess, 'Correct answer:', this.currentGoal.player);
+        if (!guess) return;
         
         const isCorrect = guess.toLowerCase() === this.currentGoal.player.toLowerCase();
-        console.log('Is correct:', isCorrect);
         
         this.attemptsUsed++;
         this.updateAttemptBox(isCorrect);
@@ -176,37 +170,22 @@ class FootballQuizGame {
     handleCorrectGuess() {
         this.gameWon = true;
         this.gameEnded = true;
-        
-        // Unmute video on correct guess
         this.videoElement.muted = false;
-        
-        // Show goal details card
         this.showGoalDetailsCard();
-        
-        // Disable controls
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
-        
-        // Update statistics
         this.updateStatistics('win', this.attemptsUsed);
-        
-        // Show end game modal after delay
-        setTimeout(() => {
-            this.showEndGameModal();
-        }, 2000);
+        setTimeout(() => this.showEndGameModal(), 2000);
     }
     
     handleIncorrectGuess() {
-        // Clear input
         this.playerInput.value = '';
         
-        // Reveal next hint
         if (this.hintsRevealed < this.hintSequence.length) {
             this.revealHint(this.hintSequence[this.hintsRevealed]);
             this.hintsRevealed++;
         }
         
-        // Check if game is over
         if (this.attemptsUsed >= this.maxAttempts) {
             this.handleGameOver();
         }
@@ -215,24 +194,12 @@ class FootballQuizGame {
     handleGameOver() {
         this.gameEnded = true;
         this.gameWon = false;
-        
-        // Unmute video
         this.videoElement.muted = false;
-        
-        // Disable controls
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
-        
-        // Show correct answer
         this.showGoalDetailsCard();
-        
-        // Update statistics
         this.updateStatistics('loss', this.attemptsUsed);
-        
-        // Show end game modal after delay
-        setTimeout(() => {
-            this.showEndGameModal();
-        }, 2000);
+        setTimeout(() => this.showEndGameModal(), 2000);
     }
     
     revealHint(hintType) {
@@ -245,7 +212,6 @@ class FootballQuizGame {
     }
     
     showGoalDetailsCard() {
-        const card = document.getElementById('goalDetailsCard');
         const playerName = document.getElementById('cardPlayerName');
         const description = document.getElementById('cardDescription');
         const team = document.getElementById('cardTeam');
@@ -258,7 +224,10 @@ class FootballQuizGame {
         year.textContent = this.currentGoal.year;
         competition.textContent = this.currentGoal.competition;
         
-        card.style.display = 'block';
+        this.goalDetailsCard.style.display = 'block';
+
+        // Immediately check scroll position to decide if card should be visible
+        this.handleCardVisibilityOnScroll();
     }
     
     updateUI() {
@@ -266,7 +235,6 @@ class FootballQuizGame {
         this.statsUsed.textContent = this.attemptsUsed;
         this.statsRemaining.textContent = attemptsRemaining;
         
-        // Update correct answers from statistics
         const stats = this.getStatistics();
         this.statsCorrect.textContent = stats.totalWins;
     }
@@ -279,7 +247,6 @@ class FootballQuizGame {
         const goalDescription = document.getElementById('goalDescription');
         const nextGameCountdown = document.getElementById('nextGameCountdown');
         
-        // Set modal content
         if (this.gameWon) {
             modalTitle.textContent = 'Parabéns! 🎉';
             modalResult.textContent = `Você acertou em ${this.attemptsUsed}/${this.maxAttempts} tentativas!`;
@@ -291,7 +258,6 @@ class FootballQuizGame {
         goalPlayer.textContent = this.currentGoal.player;
         goalDescription.textContent = this.currentGoal.description;
         
-        // Show countdown for daily mode
         if (this.gameMode === 'daily') {
             nextGameCountdown.style.display = 'block';
             this.startCountdown();
@@ -299,9 +265,7 @@ class FootballQuizGame {
             nextGameCountdown.style.display = 'none';
         }
         
-        // Show victory chart
         this.showVictoryChart();
-        
         modal.style.display = 'block';
     }
     
@@ -360,32 +324,21 @@ class FootballQuizGame {
         };
         
         updateCountdown();
-        const interval = setInterval(updateCountdown, 1000);
-        
-        // Store interval to clear it later
-        this.countdownInterval = interval;
+        this.countdownInterval = setInterval(updateCountdown, 1000);
     }
     
     updateStatistics(result, attempts) {
         const stats = this.getStatistics();
-        
         stats.totalGames++;
-        
         if (result === 'win') {
             stats.totalWins++;
             stats.distribution[attempts] = (stats.distribution[attempts] || 0) + 1;
         }
-        
         localStorage.setItem('gameStatistics', JSON.stringify(stats));
     }
     
     getStatistics() {
-        const defaultStats = {
-            totalGames: 0,
-            totalWins: 0,
-            distribution: {} // attempts -> count
-        };
-        
+        const defaultStats = { totalGames: 0, totalWins: 0, distribution: {} };
         const saved = localStorage.getItem('gameStatistics');
         return saved ? JSON.parse(saved) : defaultStats;
     }
@@ -399,7 +352,6 @@ class FootballQuizGame {
                 gameEnded: this.gameEnded,
                 gameWon: this.gameWon
             };
-            
             localStorage.setItem('gameState', JSON.stringify(gameState));
             localStorage.setItem('lastPlayedDate', new Date().toDateString());
         }
@@ -412,25 +364,21 @@ class FootballQuizGame {
         this.gameEnded = gameState.gameEnded;
         this.gameWon = gameState.gameWon;
         
-        // Restore UI state
         this.loadVideo();
         
-        // Restore attempt boxes
         const attemptBoxes = document.querySelectorAll('.attempt-box');
         for (let i = 0; i < this.attemptsUsed; i++) {
             attemptBoxes[i].classList.add(this.gameWon && i === this.attemptsUsed - 1 ? 'correct' : 'used');
         }
         
-        // Restore hints
         for (let i = 0; i < this.hintsRevealed; i++) {
             this.revealHint(this.hintSequence[i]);
         }
         
-        // Restore game end state
         if (this.gameEnded) {
             this.playerInput.disabled = true;
             this.guessButton.disabled = true;
-            this.videoElement.muted = false; // Unmute video
+            this.videoElement.muted = false;
             this.showGoalDetailsCard();
         }
         
@@ -438,25 +386,19 @@ class FootballQuizGame {
     }
     
     generateShareText() {
-        const today = new Date().toLocaleDateString('pt-PT');
         const emojiSequence = [];
-        
         for (let i = 0; i < this.maxAttempts; i++) {
             if (i < this.attemptsUsed - 1) {
-                emojiSequence.push('🟥'); // Wrong attempts
+                emojiSequence.push('🟥');
             } else if (i === this.attemptsUsed - 1 && this.gameWon) {
-                emojiSequence.push('🟩'); // Correct attempt
+                emojiSequence.push('🟩');
             } else if (i < this.attemptsUsed) {
-                emojiSequence.push('🟥'); // Failed attempts
+                emojiSequence.push('🟥');
             } else {
-                emojiSequence.push('⬛'); // Unused attempts
+                emojiSequence.push('⬛');
             }
         }
-        
-        const result = this.gameWon ? 
-            `${this.attemptsUsed}/${this.maxAttempts}` : 
-            `X/${this.maxAttempts}`;
-        
+        const result = this.gameWon ? `${this.attemptsUsed}/${this.maxAttempts}` : `X/${this.maxAttempts}`;
         return `⚽ Adivinhe o Gol #${this.currentGoal.id} ${result}\n\n${emojiSequence.join('')}\n\n#AdivinheOGol\nJogue em: ${window.location.href}`;
     }
 }
