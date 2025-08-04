@@ -22,7 +22,7 @@
     
     <!-- About page -->
     <url>
-        <loc>https://advinheogol.com/sobre</loc>
+        <loc>https://advinheogol.com/src/pages/termos.html</loc>
         <lastmod>2025-01-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -30,7 +30,7 @@
     
     <!-- Terms of use -->
     <url>
-        <loc>https://advinheogol.com/termos</loc>
+        <loc>https://advinheogol.com/src/pages/termos.html</loc>
         <lastmod>2025-01-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
@@ -38,7 +38,7 @@
     
     <!-- Privacy policy -->
     <url>
-        <loc>https://advinheogol.com/privacidade</loc>
+        <loc>https://advinheogol.com/src/pages/privacidade.html</loc>
         <lastmod>2025-01-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
@@ -46,7 +46,7 @@
     
     <!-- Contact -->
     <url>
-        <loc>https://advinheogol.com/contato</loc>
+        <loc>https://advinheogol.com/src/pages/contato.html</loc>
         <lastmod>2025-01-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
