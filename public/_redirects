@@ -1,0 +1,8 @@
+@@ .. @@
++# Netlify redirects
++
++# Redirect www to non-www
++https://www.advinheogol.com/* https://advinheogol.com/:splat 301!
++
++# SPA fallback
+ /*    /index.html   200

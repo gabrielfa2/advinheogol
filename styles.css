@@ -67,6 +67,13 @@ body::before {
     letter-spacing: -1px;
 }
 
+.subtitle {
+    font-size: 16px;
+    color: #9ca3af;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
 /* --- NOVO LAYOUT (DESKTOP PRIMEIRO) --- */
 .main-content {
     display: grid;
