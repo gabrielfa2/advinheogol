@@ -6,12 +6,17 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    background: #0c0c0c;
     background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
     color: #ffffff;
     min-height: 100vh;
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
+    /* iOS Safari fix */
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Animated background pattern */
@@ -22,11 +27,20 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    /* Fallback para iOS */
+    background-color: rgba(34, 197, 94, 0.05);
     background-image: 
         radial-gradient(circle at 25% 25%, #22c55e15 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, #16a34a15 0%, transparent 50%);
+    /* iOS Safari compatibility */
+    -webkit-background-size: 100% 100%, 100% 100%;
+    background-size: 100% 100%, 100% 100%;
     animation: backgroundFloat 20s ease-in-out infinite;
     z-index: -1;
+    /* Force hardware acceleration on iOS */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 @keyframes backgroundFloat {
@@ -41,6 +55,9 @@ body::before {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    /* iOS Safari fix para garantir que o container tenha o fundo correto */
+    position: relative;
+    z-index: 1;
 }
 
 /* Header */
@@ -178,17 +195,27 @@ body::before {
 }
 
 .hint-item {
-    background: rgba(31, 41, 55, 0.6);
+    background: rgba(31, 41, 55, 0.8);
+    /* Fallback para iOS */
+    background-color: #1f2937;
     border: 1px solid #374151;
     border-radius: 12px;
     padding: 16px;
     text-align: center;
     transition: all 0.3s ease;
+    /* iOS Safari backdrop-filter fix */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    /* Fallback para dispositivos que não suportam backdrop-filter */
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(31, 41, 55, 0.95);
+    }
 }
 
 .hint-item.revealed {
-    background: rgba(34, 197, 94, 0.1);
+    background: rgba(34, 197, 94, 0.15);
+    /* Fallback para iOS */
+    background-color: rgba(34, 197, 94, 0.1);
     border-color: #22c55e;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
@@ -229,11 +256,15 @@ body::before {
     width: 100%;
     padding: 16px 20px;
     font-size: 16px;
-    background: rgba(31, 41, 55, 0.8);
+    background: rgba(31, 41, 55, 0.9);
+    /* Fallback para iOS */
+    background-color: #1f2937;
     border: 2px solid #374151;
     border-radius: 12px;
     color: #ffffff;
     transition: all 0.3s ease;
+    /* iOS Safari backdrop-filter fix */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -253,9 +284,13 @@ body::before {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(31, 41, 55, 0.95);
+    background: rgba(31, 41, 55, 0.98);
+    /* Fallback para iOS */
+    background-color: #1f2937;
     border: 1px solid #374151;
     border-radius: 12px;
+    /* iOS Safari backdrop-filter fix */
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     max-height: 200px;
     overflow-y: auto;
@@ -358,9 +393,13 @@ body::before {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    background: rgba(31, 41, 55, 0.3);
+    background: rgba(31, 41, 55, 0.6);
+    /* Fallback para iOS */
+    background-color: rgba(31, 41, 55, 0.8);
     border-radius: 16px;
     padding: 24px;
+    /* iOS Safari backdrop-filter fix */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid #374151;
 }
@@ -474,19 +513,27 @@ body::before {
     opacity: 0;
     width: 90%;
     max-width: 400px;
-    background: rgba(31, 41, 55, 0.95);
+    background: rgba(31, 41, 55, 0.98);
+    /* Fallback para iOS */
+    background-color: #1f2937;
     border: 1px solid #22c55e;
     border-radius: 16px;
     padding: 20px;
+    /* iOS Safari backdrop-filter fix */
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     z-index: 1500;
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     pointer-events: none;
+    /* Force hardware acceleration on iOS */
+    -webkit-transform: translateX(-50%) translateY(-150%) translateZ(0);
+    transform: translateX(-50%) translateY(-150%) translateZ(0);
 }
 
 .goal-details-card.is-visible {
-    transform: translateX(-50%) translateY(0);
+    -webkit-transform: translateX(-50%) translateY(0) translateZ(0);
+    transform: translateX(-50%) translateY(0) translateZ(0);
     opacity: 1;
     pointer-events: auto;
 }
@@ -500,8 +547,12 @@ body::before {
     width: 100%;
     padding: 48px 24px;
     margin-top: auto;
-    background-color: #0c0c0c;
+    background: #0c0c0c;
+    background: linear-gradient(135deg, #0c0c0c 0%, #111827 100%);
     border-top: 1px solid rgba(34, 197, 94, 0.2);
+    /* iOS Safari fix */
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {
