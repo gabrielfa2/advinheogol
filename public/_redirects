@@ -1,13 +1,12 @@
-@@ .. @@
-+# Netlify redirects
-+
-+# Redirect www to non-www
-+https://www.advinheogol.com/* https://advinheogol.com/:splat 301!
-+
-# Handle SPA routing for pages
+# Netlify redirects
+
+# Redirect www to non-www
+https://www.advinheogol.com/* https://advinheogol.com/:splat 301!
+
+# Handle legal pages - direct file serving
 /termos /src/pages/termos.html 200
 /privacidade /src/pages/privacidade.html 200
 /contato /src/pages/contato.html 200
 
-+# SPA fallback
- /*    /index.html   200
+# SPA fallback for main app
+/* /index.html 200
