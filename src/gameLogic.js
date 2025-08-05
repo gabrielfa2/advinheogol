@@ -217,7 +217,14 @@ class FootballQuizGame {
         const hintItem = document.querySelector(`[data-hint="${hintType}"]`);
         if (hintItem) {
             const hintValue = hintItem.querySelector('.hint-value');
-            hintValue.textContent = this.currentGoal[hintType];
+            let value = this.currentGoal[hintType];
+            
+            // Translate foot type if it's the dominantFoot hint
+            if (hintType === 'dominantFoot') {
+                value = window.i18n.translateFootType(value);
+            }
+            
+            hintValue.textContent = value;
             hintItem.classList.add('revealed');
         }
     }
@@ -265,11 +272,16 @@ class FootballQuizGame {
         const nextGameCountdown = document.getElementById('nextGameCountdown');
         
         if (this.gameWon) {
-            modalTitle.textContent = 'Parabéns! 🎉';
-            modalResult.textContent = `Você acertou em ${this.attemptsUsed}/${this.maxAttempts} tentativas!`;
+            modalTitle.textContent = window.i18n.t('congratulations') + ' 🎉';
+            modalResult.textContent = window.i18n.t('winMessage', {
+                attempts: this.attemptsUsed,
+                maxAttempts: this.maxAttempts
+            });
         } else {
-            modalTitle.textContent = 'Que pena! 😔';
-            modalResult.textContent = `Você esgotou as ${this.maxAttempts} tentativas.`;
+            modalTitle.textContent = window.i18n.t('tooBar') + ' 😔';
+            modalResult.textContent = window.i18n.t('loseMessage', {
+                maxAttempts: this.maxAttempts
+            });
         }
         
         goalPlayer.textContent = this.currentGoal.player;

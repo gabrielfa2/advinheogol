@@ -3,6 +3,7 @@ import './gameData.js';
 import './autocomplete.js';
 import './gameLogic.js';
 import './modal.js';
+import './i18n.js';
 
 // Main application initialization
 class App {
