@@ -27,14 +27,14 @@ const GAME_DATA = [
     {
         id: 3,
         videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
-        player: "Pelé",
-        team: "Brasil",
-        year: 1970,
-        competition: "Copa do Mundo",
+        player: "Cristiano Ronaldo",
+        team: "Real Madrid",
+        year: 2018,
+        competition: "Champions League",
         position: "Atacante",
-        jerseyNumber: 10,
+        jerseyNumber: 7,
         dominantFoot: "Direito",
-        description: "O gol do século na final da Copa do Mundo de 1970, consolidando Pelé como o maior jogador de todos os tempos."
+        description: "Gol espetacular de bicicleta na Champions League, demonstrando a técnica e atleticismo do craque português."
     },
     {
         id: 4,

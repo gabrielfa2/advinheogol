@@ -278,7 +278,7 @@ class FootballQuizGame {
                 maxAttempts: this.maxAttempts
             });
         } else {
-            modalTitle.textContent = window.i18n.t('tooBar') + ' 😔';
+            modalTitle.textContent = window.i18n.t('tooBad') + ' 😔';
             modalResult.textContent = window.i18n.t('loseMessage', {
                 maxAttempts: this.maxAttempts
             });
