@@ -1,318 +1,35 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - Nome do Jogo</title>
     <link rel="stylesheet" href="/src/index.css" />
-    <!-- SEO Meta Tags -->
-    <title>Termos de Uso - Adivinhe o Gol</title>
-    <meta name="description" content="Termos de uso e condições de serviço do Adivinhe o Gol. Leia nossas regras e políticas para usar nosso quiz de futebol.">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://advinheogol.com/termos">
-    <meta property="og:title" content="Termos de Uso - Adivinhe o Gol">
-    <meta property="og:description" content="Termos de uso e condições de serviço do Adivinhe o Gol.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://advinheogol.com/termos">
-    <link rel="stylesheet" href="/src/index.css" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        .legal-page {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 24px;
-            background: rgba(31, 41, 55, 0.8);
-            background-color: #1f2937;
-            border-radius: 16px;
-            border: 1px solid #374151;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            margin-bottom: 48px;
-        }
-        
-        .legal-page h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #22c55e;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        
-        .legal-page h2 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #22c55e;
-            margin-top: 32px;
-            margin-bottom: 16px;
-        }
-        
-        .legal-page p {
-            color: #d1d5db;
-            line-height: 1.7;
-            margin-bottom: 16px;
-            text-align: justify;
-        }
-        
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-bottom: 32px;
-        }
-        
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
-        }
-        
-        .intro-text {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 32px;
-        }
-        
-        .intro-text p {
-            margin-bottom: 12px;
-        }
-        
-        .intro-text p:last-child {
-            margin-bottom: 0;
-        }
-
-        .language-selector {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .lang-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #1f2937;
-            border: 1px solid #374151;
-            color: #9ca3af;
-            padding: 8px 16px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-        .lang-btn:hover, .lang-btn.active {
-            background-color: #374151;
-            color: #ffffff;
-            border-color: #4b5563;
-        }
-
-        .lang-btn svg {
-            border-radius: 50%;
-        }
-
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-    </style>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="title">
-                Adivinhe o G<span class="emoji-ball">⚽</span>l
-            </h1>
-        </header>
-
-        <main class="main-content">
-            <a href="/" class="back-button">
-                <span data-back-text="← Voltar ao Jogo">← Voltar ao Jogo</span>
-            </a>
-
-            <div class="language-selector">
-                <a href="#" class="lang-btn active" id="lang-br-page">
-                    <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#009B3A"/><path d="M37.5 43.75L6.25 25L37.5 6.25L68.75 25L37.5 43.75Z" fill="#FFCC29"/><path d="M37.5 34.375C42.7031 34.375 46.875 30.2031 46.875 25C46.875 19.7969 42.7031 15.625 37.5 15.625C32.2969 15.625 28.125 19.7969 28.125 25C28.125 30.2031 32.2969 34.375 37.5 34.375Z" fill="#002776"/></svg>
-                    <span>BR</span>
-                </a>
-                <a href="#" class="lang-btn" id="lang-en-page">
-                    <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#fff"/><path d="M0 0V50H75V0H0ZM31.25 18.75H43.75V31.25H31.25V18.75ZM25 18.75V31.25H18.75V18.75H25ZM50 18.75H56.25V31.25H50V18.75ZM31.25 12.5V6.25H43.75V12.5H31.25ZM31.25 43.75V37.5H43.75V43.75H31.25Z" fill="#C8102E"/></svg>
-                    <span>EN</span>
-                </a>
-                <a href="#" class="lang-btn" id="lang-es-page">
-                    <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#C60B1E"/><path d="M0 25H75V50H0V25Z" fill="#FFC400"/></svg>
-                    <span>ES</span>
-                </a>
-            </div>
-            
-            <!-- Portuguese Content -->
-            <div class="legal-page content-section active" id="content-br">
-                <h1>Termos de Uso e Serviço</h1>
-                
-                <div class="intro-text">
-                    <p>Seja Bem-Vindo ao site da Adivinhe o Gol. Antes de explorar tudo o que temos a oferecer, é importante que você entenda e concorde com algumas regras básicas que regem o uso do nosso site advinheogol.com, e qualquer outro serviço digital que nós oferecemos.</p>
-                    
-                    <p>Ao usar nosso site e serviços, você automaticamente concorda em seguir as regras que estabelecemos aqui. Caso não concorde com algo, por favor, considere não usar nossos serviços. É muito importante para nós que você se sinta seguro e informado a todo momento.</p>
-                </div>
-
-                <h2>1. Aceitando os Termos</h2>
-                <p>Ao navegar e usar o site da Adivinhe o Gol, você concorda automaticamente com nossas regras e condições. Estamos sempre procurando melhorar, então esses termos podem mudar de vez em quando. Se fizermos alterações significativas, vamos postar as atualizações aqui no site. Continuar usando o site após essas mudanças significa que você aceita os novos termos.</p>
-
-                <h2>2. Como Usar o Nosso Site</h2>
-                <p>A maior parte do nosso site está aberta para você sem a necessidade de cadastro. No entanto, algumas seções especiais podem exigir que você crie uma conta. Pedimos que você seja honesto ao fornecer suas informações e que mantenha sua senha e login seguros. Se decidir compartilhar algum conteúdo conosco, como comentários, por favor, faça-o de maneira respeitosa e dentro da lei.</p>
-
-                <h2>3. Sua Privacidade</h2>
-                <p>Na Adivinhe o Gol, a privacidade é um valor essencial. Ao interagir com nosso site, você aceita nossa Política de Privacidade, que detalha nossa abordagem responsável e conforme às leis para o manejo dos seus dados pessoais. Nosso compromisso é com a transparência e a segurança: explicamos como coletamos, usamos e protegemos suas informações, garantindo sua privacidade e oferecendo controle sobre seus dados.</p>
-
-                <h2>4. Direitos de Conteúdo</h2>
-                <p>O conteúdo disponível no site da Adivinhe o Gol, incluindo, mas não se limitando a, textos, imagens, ilustrações, designs, ícones, fotografias, programas de computador, videoclipes e áudios, constitui propriedade intelectual protegida tanto pela legislação nacional quanto por tratados internacionais sobre direitos autorais e propriedade industrial.</p>
-
-                <h2>5. Cookies e Mais</h2>
-                <p>Utilizamos cookies para melhorar sua experiência, coletando informações anônimas durante sua visita, como suas preferências de idioma, duração da visita, páginas acessadas, e outras estatísticas de uso. Esses dados nos ajudam a personalizar seu conteúdo, otimizar a navegação, melhorar continuamente o site em design e funcionalidade, e garantir sua segurança online.</p>
-
-                <h2>6. Explorando Links Externos</h2>
-                <p>Nosso site pode incluir links para sites externos que achamos que podem ser do seu interesse. Note que não temos controle sobre esses sites externos e, portanto, não somos responsáveis pelo seu conteúdo ou políticas.</p>
-
-                <h2>7. Mudanças e Atualizações</h2>
-                <p>A evolução é parte de como operamos, o que significa que estes Termos de Uso podem passar por atualizações para refletir melhor as mudanças em nossos serviços ou na legislação. Sempre que isso acontecer, você encontrará a versão mais recente disponível aqui.</p>
-
-                <h2>Dúvidas ou Comentários?</h2>
-                <p>Se tiver dúvidas sobre estes termos, não hesite em nos contatar através do e-mail <strong>advinheogol@gmail.com</strong>.</p>
-            </div>
-
-            <!-- English Content -->
-            <div class="legal-page content-section" id="content-en">
-                <h1>Terms of Use and Service</h1>
-                
-                <div class="intro-text">
-                    <p>Welcome to the Guess the Goal website. Before exploring everything we have to offer, it's important that you understand and agree with some basic rules that govern the use of our website advinheogol.com, and any other digital service we offer.</p>
-                    
-                    <p>By using our website and services, you automatically agree to follow the rules we establish here. If you don't agree with something, please consider not using our services. It's very important to us that you feel safe and informed at all times.</p>
-                </div>
-
-                <h2>1. Accepting the Terms</h2>
-                <p>By browsing and using the Guess the Goal website, you automatically agree to our rules and conditions. We are always looking to improve, so these terms may change from time to time. If we make significant changes, we will post the updates here on the site. Continuing to use the site after these changes means you accept the new terms.</p>
-
-                <h2>2. How to Use Our Site</h2>
-                <p>Most of our site is open to you without the need for registration. However, some special sections may require you to create an account. We ask that you be honest when providing your information and keep your password and login secure. If you decide to share any content with us, such as comments, please do so respectfully and within the law.</p>
-
-                <h2>3. Your Privacy</h2>
-                <p>At Guess the Goal, privacy is an essential value. By interacting with our site, you accept our Privacy Policy, which details our responsible and law-compliant approach to handling your personal data. Our commitment is to transparency and security: we explain how we collect, use and protect your information, ensuring your privacy and offering control over your data.</p>
-
-                <h2>4. Content Rights</h2>
-                <p>The content available on the Guess the Goal website, including but not limited to texts, images, illustrations, designs, icons, photographs, computer programs, video clips and audio, constitutes intellectual property protected by both national legislation and international treaties on copyright and industrial property.</p>
-
-                <h2>5. Cookies and More</h2>
-                <p>We use cookies to improve your experience, collecting anonymous information during your visit, such as your language preferences, visit duration, pages accessed, and other usage statistics. This data helps us personalize your content, optimize navigation, continuously improve the site in design and functionality, and ensure your online security.</p>
-
-                <h2>6. Exploring External Links</h2>
-                <p>Our site may include links to external sites that we think may be of interest to you. Note that we have no control over these external sites and therefore are not responsible for their content or policies.</p>
-
-                <h2>7. Changes and Updates</h2>
-                <p>Evolution is part of how we operate, which means these Terms of Use may undergo updates to better reflect changes in our services or legislation. Whenever this happens, you will find the most recent version available here.</p>
-
-                <h2>Questions or Comments?</h2>
-                <p>If you have questions about these terms, don't hesitate to contact us via email <strong>advinheogol@gmail.com</strong>.</p>
-            </div>
-
-            <!-- Spanish Content -->
-            <div class="legal-page content-section" id="content-es">
-                <h1>Términos de Uso y Servicio</h1>
-                
-                <div class="intro-text">
-                    <p>Bienvenido al sitio web de Adivina el Gol. Antes de explorar todo lo que tenemos para ofrecer, es importante que entiendas y estés de acuerdo con algunas reglas básicas que rigen el uso de nuestro sitio web advinheogol.com, y cualquier otro servicio digital que ofrezcamos.</p>
-                    
-                    <p>Al usar nuestro sitio web y servicios, automáticamente aceptas seguir las reglas que establecemos aquí. Si no estás de acuerdo con algo, por favor considera no usar nuestros servicios. Es muy importante para nosotros que te sientas seguro e informado en todo momento.</p>
-                </div>
-
-                <h2>1. Aceptando los Términos</h2>
-                <p>Al navegar y usar el sitio web de Adivina el Gol, automáticamente aceptas nuestras reglas y condiciones. Siempre estamos buscando mejorar, por lo que estos términos pueden cambiar de vez en cuando. Si hacemos cambios significativos, publicaremos las actualizaciones aquí en el sitio. Continuar usando el sitio después de estos cambios significa que aceptas los nuevos términos.</p>
-
-                <h2>2. Cómo Usar Nuestro Sitio</h2>
-                <p>La mayor parte de nuestro sitio está abierta para ti sin necesidad de registro. Sin embargo, algunas secciones especiales pueden requerir que crees una cuenta. Te pedimos que seas honesto al proporcionar tu información y que mantengas tu contraseña y login seguros. Si decides compartir algún contenido con nosotros, como comentarios, por favor hazlo de manera respetuosa y dentro de la ley.</p>
-
-                <h2>3. Tu Privacidad</h2>
-                <p>En Adivina el Gol, la privacidad es un valor esencial. Al interactuar con nuestro sitio, aceptas nuestra Política de Privacidad, que detalla nuestro enfoque responsable y conforme a las leyes para el manejo de tus datos personales. Nuestro compromiso es con la transparencia y la seguridad: explicamos cómo recopilamos, usamos y protegemos tu información, garantizando tu privacidad y ofreciendo control sobre tus datos.</p>
-
-                <h2>4. Derechos de Contenido</h2>
-                <p>El contenido disponible en el sitio web de Adivina el Gol, incluyendo pero no limitándose a textos, imágenes, ilustraciones, diseños, íconos, fotografías, programas de computadora, videoclips y audio, constituye propiedad intelectual protegida tanto por la legislación nacional como por tratados internacionales sobre derechos de autor y propiedad industrial.</p>
-
-                <h2>5. Cookies y Más</h2>
-                <p>Utilizamos cookies para mejorar tu experiencia, recopilando información anónima durante tu visita, como tus preferencias de idioma, duración de la visita, páginas accedidas y otras estadísticas de uso. Estos datos nos ayudan a personalizar tu contenido, optimizar la navegación, mejorar continuamente el sitio en diseño y funcionalidad, y garantizar tu seguridad en línea.</p>
-
-                <h2>6. Explorando Enlaces Externos</h2>
-                <p>Nuestro sitio puede incluir enlaces a sitios externos que creemos que pueden ser de tu interés. Ten en cuenta que no tenemos control sobre estos sitios externos y, por lo tanto, no somos responsables de su contenido o políticas.</p>
-
-                <h2>7. Cambios y Actualizaciones</h2>
-                <p>La evolución es parte de cómo operamos, lo que significa que estos Términos de Uso pueden sufrir actualizaciones para reflejar mejor los cambios en nuestros servicios o en la legislación. Siempre que esto suceda, encontrarás la versión más reciente disponible aquí.</p>
-
-                <h2>¿Preguntas o Comentarios?</h2>
-                <p>Si tienes preguntas sobre estos términos, no dudes en contactarnos a través del correo electrónico <strong>advinheogol@gmail.com</strong>.</p>
-            </div>
-        </main>
-    </div>
-
-    <script>
-        // Language switching functionality
-        const langButtons = document.querySelectorAll('.lang-btn');
-        const contentSections = document.querySelectorAll('.content-section');
-        const backText = document.querySelector('[data-back-text]');
-
-        const translations = {
-            'br': '← Voltar ao Jogo',
-            'en': '← Back to Game',
-            'es': '← Volver al Juego'
-        };
-
-        langButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all buttons
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Hide all content sections
-                contentSections.forEach(section => section.classList.remove('active'));
-                
-                // Show selected content section
-                const lang = button.id.split('-')[1];
-                const targetContent = document.getElementById(`content-${lang}`);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
-
-                // Update back button text
-                if (backText && translations[lang]) {
-                    backText.textContent = translations[lang];
-                }
-            });
-        });
-    </script>
+<body class="bg-gray-900 text-white font-sans">
+    <header class="bg-gray-800 p-4 text-center">
+        <h1 class="text-3xl">Termos de Uso</h1>
+    </header>
+    <main class="p-8">
+        <section class="mb-6">
+            <h2 class="text-2xl mb-2">1. Aceitação dos Termos</h2>
+            <p>Ao acessar e jogar nosso jogo, você concorda em cumprir estes Termos de Uso e todas as leis e regulamentos aplicáveis.</p>
+        </section>
+        <section class="mb-6">
+            <h2 class="text-2xl mb-2">2. Licença de Uso</h2>
+            <p>É concedida permissão para usar o jogo para fins pessoais e não comerciais. Esta é a concessão de uma licença, não uma transferência de título.</p>
+        </section>
+        <section class="mb-6">
+            <h2 class="text-2xl mb-2">3. Limitações</h2>
+            <p>Você concorda em não usar o jogo para fins ilegais ou de qualquer forma que possa prejudicar, desabilitar, sobrecarregar ou prejudicar o jogo ou a experiência de outros jogadores.</p>
+        </section>
+        <section>
+            <h2 class="text-2xl mb-2">4. Isenção de Garantia</h2>
+            <p>O jogo é fornecido "como está", sem qualquer garantia, expressa ou implícita. Não garantimos que o jogo estará livre de erros ou que o acesso será contínuo ou ininterrupto.</p>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        <p>&copy; 2024 Nome do Jogo. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
