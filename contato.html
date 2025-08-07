@@ -20,9 +20,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
     <div class="container">
@@ -106,26 +103,6 @@
         </footer>
     </div>
 
-    <script>
-        // O script de troca de idioma permanece o mesmo
-        const langButtons = document.querySelectorAll('.lang-btn');
-        const contentSections = document.querySelectorAll('.content-section');
-
-        langButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                const lang = button.id.split('-')[1];
-                
-                // Remove active class from all buttons and sections
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                contentSections.forEach(section => section.classList.remove('active'));
-
-                // Add active class to clicked button and corresponding section
-                button.classList.add('active');
-                document.getElementById(`content-${lang}`).classList.add('active');
-            });
-        });
-    </script>
+    <script type="module" src="/src/contato.js"></script>
 </body>
 </html>

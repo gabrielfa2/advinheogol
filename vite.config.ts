@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
 import { viteStaticCopy } from 'vite-plugin-static-copy' // Importa o plugin
 
@@ -22,5 +23,15 @@ export default defineConfig({
         }
       ]
     })
-  ]
+  ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        contato: resolve(__dirname, 'contato.html'),
+        privacidade: resolve(__dirname, 'privacidade.html'),
+        termos: resolve(__dirname, 'termos.html'),
+      },
+    },
+  },
 })
