@@ -3,28 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/index.css" />
+    <!-- SEO Meta Tags -->
     <title>Contato - Adivinhe o Gol</title>
     <meta name="description" content="Entre em contato com a equipe do Adivinhe o Gol. Tire suas dúvidas sobre nosso quiz de futebol.">
     <meta name="robots" content="index, follow">
     
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://advinheogol.com/contato">
     <meta property="og:title" content="Contato - Adivinhe o Gol">
     <meta property="og:description" content="Entre em contato com a equipe do Adivinhe o Gol.">
     
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://advinheogol.com/contato">
     
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/src/index.css" />
-    <link rel="stylesheet" href="/src/static-pages.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-page {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            text-align: center;
+        }
+        
+        .contact-card {
+            background: rgba(31, 41, 55, 0.8);
+            background-color: #1f2937;
+            border-radius: 20px;
+            border: 1px solid #374151;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 48px 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-card h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 32px;
+        }
+        
+        .contact-card p {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 18px;
+        }
+        
+        .contact-info {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        
+        .contact-info h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #22c55e;
+            margin-bottom: 16px;
+        }
+        
+        .contact-info p {
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .contact-info p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .email-link {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .email-link:hover {
+            color: #16a34a;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 32px;
+            font-size: 16px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+        
+        .football-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            display: block;
+        }
 
+        .language-selector {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            color: #9ca3af;
+            padding: 8px 16px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background-color: #374151;
+            color: #ffffff;
+            border-color: #4b5563;
+        }
+
+        .lang-btn svg {
+            border-radius: 50%;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body>
     <div class="container">
         <header class="header">
             <h1 class="title">
@@ -49,6 +188,7 @@
             </div>
 
             <div class="contact-page">
+                <!-- Portuguese Content -->
                 <div class="contact-card content-section active" id="content-br">
                     <span class="football-icon">⚽</span>
                     <h1>CONTATO</h1>
@@ -65,6 +205,7 @@
                     </a>
                 </div>
 
+                <!-- English Content -->
                 <div class="contact-card content-section" id="content-en">
                     <span class="football-icon">⚽</span>
                     <h1>CONTACT</h1>
@@ -81,6 +222,7 @@
                     </a>
                 </div>
 
+                <!-- Spanish Content -->
                 <div class="contact-card content-section" id="content-es">
                     <span class="football-icon">⚽</span>
                     <h1>CONTACTO</h1>
@@ -116,17 +258,23 @@
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 
+                // Remove active class from all buttons
                 langButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
                 button.classList.add('active');
                 
+                // Hide all content sections
                 contentSections.forEach(section => section.classList.remove('active'));
                 
+                // Show selected content section
                 const lang = button.id.split('-')[1];
                 const targetContent = document.getElementById(`content-${lang}`);
                 if (targetContent) {
                     targetContent.classList.add('active');
                 }
 
+                // Update back button text
                 if (backText && translations[lang]) {
                     backText.textContent = translations[lang];
                 }

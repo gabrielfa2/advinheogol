@@ -3,29 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/index.css" />
     
+    <!-- SEO Meta Tags -->
     <title>Política de Privacidade - Adivinhe o Gol</title>
     <meta name="description" content="Política de privacidade do Adivinhe o Gol. Saiba como protegemos seus dados pessoais em conformidade com a LGPD.">
     <meta name="robots" content="index, follow">
     
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://advinheogol.com/privacidade">
     <meta property="og:title" content="Política de Privacidade - Adivinhe o Gol">
     <meta property="og:description" content="Política de privacidade do Adivinhe o Gol em conformidade com a LGPD.">
     
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://advinheogol.com/privacidade">
     
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/src/index.css" />
-    <link rel="stylesheet" href="/src/static-pages.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+            background: rgba(31, 41, 55, 0.8);
+            background-color: #1f2937;
+            border-radius: 16px;
+            border: 1px solid #374151;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            margin-bottom: 48px;
+        }
+        
+        .legal-page h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .legal-page .subtitle {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        
+        .legal-page h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #22c55e;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+        
+        .legal-page p {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        
+        .legal-page ul {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+        
+        .legal-page li {
+            margin-bottom: 8px;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 32px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+        
+        .intro-text {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .contact-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 8px;
+        }
+        
+        .contact-info p:last-child {
+            margin-bottom: 0;
+        }
 
+        .language-selector {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            color: #9ca3af;
+            padding: 8px 16px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background-color: #374151;
+            color: #ffffff;
+            border-color: #4b5563;
+        }
+
+        .lang-btn svg {
+            border-radius: 50%;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body>
     <div class="container">
         <header class="header">
             <h1 class="title">
@@ -53,6 +195,7 @@
                 </a>
             </div>
             
+            <!-- Portuguese Content -->
             <div class="legal-page content-section active" id="content-br">
                 <h1>POLÍTICA DE PRIVACIDADE</h1>
                 <div class="subtitle">
@@ -118,6 +261,7 @@
                 </div>
             </div>
 
+            <!-- English Content -->
             <div class="legal-page content-section" id="content-en">
                 <h1>PRIVACY POLICY</h1>
                 <div class="subtitle">
@@ -138,8 +282,52 @@
                 </ul>
                 <p>This information is used only for statistical purposes and to improve the user experience on the site.</p>
 
-                </div>
+                <h2>2. PURPOSE OF DATA USE</h2>
+                <p>The automatically collected data has the following purposes:</p>
+                <ul>
+                    <li>Ensure proper functioning of the site;</li>
+                    <li>Improve performance and user experience;</li>
+                    <li>Perform access and navigation analysis.</li>
+                </ul>
 
+                <h2>3. COOKIES</h2>
+                <p>The site uses essential and performance cookies to optimize your navigation. Users can, at any time, configure their browser to block cookies, although this may affect some functionalities.</p>
+
+                <h2>4. DATA SHARING</h2>
+                <p>We do not share, sell or disclose collected personal data, except when:</p>
+                <ul>
+                    <li>There is a legal obligation or determination by competent authority;</li>
+                    <li>It is necessary to enable the technical operation of the site (e.g.: hosting services).</li>
+                </ul>
+
+                <h2>5. DATA SECURITY</h2>
+                <p>We adopt reasonable digital security practices to protect collected data against unauthorized access, alteration, disclosure or destruction.</p>
+
+                <h2>6. USER RIGHTS</h2>
+                <p>Under applicable data protection laws, you have the right to:</p>
+                <ul>
+                    <li>Request access, correction, deletion or anonymization of your data;</li>
+                    <li>Know with whom your data is shared;</li>
+                    <li>Revoke consent, if applicable.</li>
+                </ul>
+
+                <h2>7. DATA RETENTION</h2>
+                <p>Automatically collected data is stored for the time necessary to fulfill the purposes described in this policy, or as required by law.</p>
+
+                <h2>8. CHANGES TO THIS POLICY</h2>
+                <p>We reserve the right to change this Privacy Policy at any time, by publishing the updated version on the site, with revision date.</p>
+
+                <h2>9. CONTACT</h2>
+                <p>For questions, requests or complaints related to privacy or personal data protection, contact us:</p>
+                
+                <div class="contact-info">
+                    <p><strong>Guess the Goal</strong></p>
+                    <p><strong>Email:</strong> advinheogol@gmail.com</p>
+                    <p><strong>Website:</strong> https://advinheogol.com</p>
+                </div>
+            </div>
+
+            <!-- Spanish Content -->
             <div class="legal-page content-section" id="content-es">
                 <h1>POLÍTICA DE PRIVACIDAD</h1>
                 <div class="subtitle">
@@ -160,7 +348,50 @@
                 </ul>
                 <p>Esta información se utiliza únicamente para fines estadísticos y para mejorar la experiencia del usuario en el sitio.</p>
 
+                <h2>2. FINALIDAD DEL USO DE DATOS</h2>
+                <p>Los datos recopilados automáticamente tienen las siguientes finalidades:</p>
+                <ul>
+                    <li>Garantizar el funcionamiento adecuado del sitio;</li>
+                    <li>Mejorar el rendimiento y la experiencia del usuario;</li>
+                    <li>Realizar análisis de acceso y navegación.</li>
+                </ul>
+
+                <h2>3. COOKIES</h2>
+                <p>El sitio utiliza cookies esenciales y de rendimiento para optimizar tu navegación. Los usuarios pueden, en cualquier momento, configurar su navegador para bloquear cookies, aunque esto puede afectar algunas funcionalidades.</p>
+
+                <h2>4. COMPARTIR DATOS</h2>
+                <p>No compartimos, vendemos o divulgamos datos personales recopilados, excepto cuando:</p>
+                <ul>
+                    <li>Haya una obligación legal o determinación por autoridad competente;</li>
+                    <li>Sea necesario para habilitar la operación técnica del sitio (ej.: servicios de hosting).</li>
+                </ul>
+
+                <h2>5. SEGURIDAD DE DATOS</h2>
+                <p>Adoptamos prácticas razonables de seguridad digital para proteger los datos recopilados contra acceso no autorizado, alteración, divulgación o destrucción.</p>
+
+                <h2>6. DERECHOS DEL USUARIO</h2>
+                <p>Bajo las leyes aplicables de protección de datos, tienes derecho a:</p>
+                <ul>
+                    <li>Solicitar acceso, corrección, eliminación o anonimización de tus datos;</li>
+                    <li>Saber con quién se comparten tus datos;</li>
+                    <li>Revocar consentimientos, si aplica.</li>
+                </ul>
+
+                <h2>7. RETENCIÓN DE DATOS</h2>
+                <p>Los datos recopilados automáticamente se almacenan por el tiempo necesario para cumplir los propósitos descritos en esta política, o según lo requerido por ley.</p>
+
+                <h2>8. CAMBIOS A ESTA POLÍTICA</h2>
+                <p>Nos reservamos el derecho de cambiar esta Política de Privacidad en cualquier momento, mediante la publicación de la versión actualizada en el sitio, con fecha de revisión.</p>
+
+                <h2>9. CONTACTO</h2>
+                <p>Para preguntas, solicitudes o quejas relacionadas con la privacidad o protección de datos personales, contáctanos:</p>
+                
+                <div class="contact-info">
+                    <p><strong>Adivina el Gol</strong></p>
+                    <p><strong>Email:</strong> advinheogol@gmail.com</p>
+                    <p><strong>Sitio web:</strong> https://advinheogol.com</p>
                 </div>
+            </div>
         </main>
     </div>
 
@@ -180,17 +411,23 @@
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 
+                // Remove active class from all buttons
                 langButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
                 button.classList.add('active');
                 
+                // Hide all content sections
                 contentSections.forEach(section => section.classList.remove('active'));
                 
+                // Show selected content section
                 const lang = button.id.split('-')[1];
                 const targetContent = document.getElementById(`content-${lang}`);
                 if (targetContent) {
                     targetContent.classList.add('active');
                 }
 
+                // Update back button text
                 if (backText && translations[lang]) {
                     backText.textContent = translations[lang];
                 }
