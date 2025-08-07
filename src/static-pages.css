@@ -1,0 +1,97 @@
+/* src/static-pages.css */
+
+.contact-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.contact-card {
+    background: rgba(31, 41, 55, 0.8);
+    background-color: #1f2937;
+    border-radius: 20px;
+    border: 1px solid #374151;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 48px 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #22c55e;
+    margin-bottom: 32px;
+}
+
+.contact-card p {
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-size: 18px;
+}
+
+.contact-info {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 32px 0;
+}
+
+.contact-info h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #22c55e;
+    margin-bottom: 16px;
+}
+
+.contact-info p {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.contact-info p:last-child {
+    margin-bottom: 0;
+}
+
+.email-link {
+    color: #22c55e;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.email-link:hover {
+    color: #16a34a;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 32px;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+}
+
+.football-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    display: block;
+}
+
+/* ... (e o restante dos estilos para o seletor de idioma, se aplicável a outras páginas) ... */
