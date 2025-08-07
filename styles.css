@@ -5,10 +5,10 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    /* NOVO FUNDO VERDE */
-    background: linear-gradient(135deg, #14532d 0%, #166534 100%);
-    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    background: #0c0c0c;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    color: #ffffff;
     min-height: 100vh;
     line-height: 1.6;
     position: relative;
