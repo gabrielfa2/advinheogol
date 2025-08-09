@@ -415,6 +415,7 @@ class FootballQuizGame {
             this.showGoalDetailsCard();
             // ALTERAÇÃO 1: Adicionada a chamada para o modal de fim de jogo.
             this.showEndGameModal();
+            setTimeout(() => this.showEndGameModal(), 10);
         }
         
         this.updateUI();
