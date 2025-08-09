@@ -54,7 +54,7 @@ class GameModal {
             // Try native sharing first (mobile)
             if (navigator.share) {
                 await navigator.share({
-                    title: 'Adivinhe o Gol',
+                    title: 'Advinhe o Gol',
                     text: shareText
                 });
                 this.showShareSuccess('Partilhado com sucesso!');
