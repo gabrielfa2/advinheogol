@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/index.css" />
     <title>Contato - Adivinhe o Gol</title>
     <meta name="description" content="Entre em contato com a equipe do Adivinhe o Gol. Tire suas dúvidas sobre nosso quiz de futebol.">
     <meta name="robots" content="index, follow">
@@ -21,8 +20,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css">
     <style>
+        /* --- ESTILOS GERAIS E DE FUNDO EXTRAÍDOS DO STYLES.CSS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0c0c0c;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(34, 197, 94, 0.05);
+            background-image: 
+                radial-gradient(circle at 25% 25%, #22c55e15 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #16a34a15 0%, transparent 50%);
+            -webkit-background-size: 100% 100%, 100% 100%;
+            background-size: 100% 100%, 100% 100%;
+            animation: backgroundFloat 20s ease-in-out infinite;
+            z-index: -1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 24px; /* Adicionado para dar um espaço no topo */
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .title .emoji-ball { 
+            -webkit-text-fill-color: initial; 
+            -webkit-background-clip: initial; 
+            background: none; 
+            font-size: 0.6em; 
+            vertical-align: middle; 
+        }
+
+        main.main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinha os itens ao topo */
+        }
+
+        /* --- ESTILOS ESPECÍFICOS DA PÁGINA DE CONTATO --- */
         .contact-page {
             max-width: 600px;
             margin: 0 auto;
@@ -158,7 +242,7 @@
         }
     </style>
 </head>
-<body style="background-color: green;">
+<body>
     <div class="container">
         <header class="header">
             <h1 class="title">
@@ -167,33 +251,30 @@
         </header>
 
         <main class="main-content">
-            <div class="language-selector">
-                <a href="#" class="lang-btn active" id="lang-br-page">
-                    <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#009B3A"/><path d="M37.5 43.75L6.25 25L37.5 6.25L68.75 25L37.5 43.75Z" fill="#FFCC29"/><path d="M37.5 34.375C42.7031 34.375 46.875 30.2031 46.875 25C46.875 19.7969 42.7031 15.625 37.5 15.625C32.2969 15.625 28.125 19.7969 28.125 25C28.125 30.2031 32.2969 34.375 37.5 34.375Z" fill="#002776"/></svg>
-                    <span>BR</span>
-                </a>
-                <a href="#" class="lang-btn" id="lang-en-page">
-                    <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#fff"/><path d="M0 0V50H75V0H0ZM31.25 18.75H43.75V31.25H31.25V18.75ZM25 18.75V31.25H18.75V18.75H25ZM50 18.75H56.25V31.25H50V18.75ZM31.25 12.5V6.25H43.75V12.5H31.25ZM31.25 43.75V37.5H43.75V43.75H31.25Z" fill="#C8102E"/></svg>
-                    <span>EN</span>
-                </a>
-                <a href="#" class="lang-btn" id="lang-es-page">
-                    <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#C60B1E"/><path d="M0 25H75V50H0V25Z" fill="#FFC400"/></svg>
-                    <span>ES</span>
-                </a>
-            </div>
-
             <div class="contact-page">
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" id="lang-br-page">
+                        <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#009B3A"/><path d="M37.5 43.75L6.25 25L37.5 6.25L68.75 25L37.5 43.75Z" fill="#FFCC29"/><path d="M37.5 34.375C42.7031 34.375 46.875 30.2031 46.875 25C46.875 19.7969 42.7031 15.625 37.5 15.625C32.2969 15.625 28.125 19.7969 28.125 25C28.125 30.2031 32.2969 34.375 37.5 34.375Z" fill="#002776"/></svg>
+                        <span>BR</span>
+                    </a>
+                    <a href="#" class="lang-btn" id="lang-en-page">
+                        <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#fff"/><path d="M0 0V50H75V0H0ZM31.25 18.75H43.75V31.25H31.25V18.75ZM25 18.75V31.25H18.75V18.75H25ZM50 18.75H56.25V31.25H50V18.75ZM31.25 12.5V6.25H43.75V12.5H31.25ZM31.25 43.75V37.5H43.75V43.75H31.25Z" fill="#C8102E"/></svg>
+                        <span>EN</span>
+                    </a>
+                    <a href="#" class="lang-btn" id="lang-es-page">
+                        <svg width="24" height="24" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H75V50H0V0Z" fill="#C60B1E"/><path d="M0 25H75V50H0V25Z" fill="#FFC400"/></svg>
+                        <span>ES</span>
+                    </a>
+                </div>
+            
                 <div class="contact-card content-section active" id="content-br">
                     <span class="football-icon">⚽</span>
                     <h1>CONTATO</h1>
-                    
                     <p>Para dúvidas, solicitações ou reclamações relacionadas à privacidade ou proteção de dados pessoais, entre em contato:</p>
-                    
                     <div class="contact-info">
                         <h2>Adivinhe o Gol</h2>
                         <p><strong>E-mail:</strong> <a href="mailto:advinheogol@gmail.com" class="email-link">advinheogol@gmail.com</a></p>
                     </div>
-                    
                     <a href="/" class="back-button">
                         <span data-back-text="⚽ Voltar ao Jogo">⚽ Voltar ao Jogo</span>
                     </a>
@@ -202,14 +283,11 @@
                 <div class="contact-card content-section" id="content-en">
                     <span class="football-icon">⚽</span>
                     <h1>CONTACT</h1>
-                    
                     <p>For questions, requests or complaints related to privacy or personal data protection, contact us:</p>
-                    
                     <div class="contact-info">
                         <h2>Guess the Goal</h2>
                         <p><strong>Email:</strong> <a href="mailto:advinheogol@gmail.com" class="email-link">advinheogol@gmail.com</a></p>
                     </div>
-                    
                     <a href="/" class="back-button">
                         <span data-back-text="⚽ Back to Game">⚽ Back to Game</span>
                     </a>
@@ -218,14 +296,11 @@
                 <div class="contact-card content-section" id="content-es">
                     <span class="football-icon">⚽</span>
                     <h1>CONTACTO</h1>
-                    
                     <p>Para preguntas, solicitudes o quejas relacionadas con la privacidad o protección de datos personales, contáctanos:</p>
-                    
                     <div class="contact-info">
                         <h2>Adivina el Gol</h2>
                         <p><strong>Email:</strong> <a href="mailto:advinheogol@gmail.com" class="email-link">advinheogol@gmail.com</a></p>
                     </div>
-                    
                     <a href="/" class="back-button">
                         <span data-back-text="⚽ Volver al Juego">⚽ Volver al Juego</span>
                     </a>
@@ -238,37 +313,20 @@
         // Language switching functionality
         const langButtons = document.querySelectorAll('.lang-btn');
         const contentSections = document.querySelectorAll('.content-section');
-        const backText = document.querySelector('[data-back-text]');
-
-        const translations = {
-            'br': '⚽ Voltar ao Jogo',
-            'en': '⚽ Back to Game',
-            'es': '⚽ Volver al Juego'
-        };
 
         langButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // Remove active class from all buttons
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Hide all content sections
-                contentSections.forEach(section => section.classList.remove('active'));
-                
-                // Show selected content section
                 const lang = button.id.split('-')[1];
+                
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                button.classList.add('active');
                 const targetContent = document.getElementById(`content-${lang}`);
                 if (targetContent) {
                     targetContent.classList.add('active');
-                }
-
-                // Update back button text
-                if (backText && translations[lang]) {
-                    backText.textContent = translations[lang];
                 }
             });
         });
