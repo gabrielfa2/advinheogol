@@ -38,7 +38,7 @@ class App {
             // Add any additional app-level functionality
             this.setupGlobalEventListeners();
             
-            console.log('Adivinhe o Gol initialized successfully');
+            console.log('Advinhe o Gol initialized successfully');
             
         } catch (error) {
             console.error('Error initializing app:', error);
