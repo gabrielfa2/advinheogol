@@ -134,7 +134,6 @@ class FootballQuizGame {
         });
     }
 
-    // NOVA FUNÇÃO para normalizar strings (remover acentos e converter para minúsculas)
     normalizeString(str) {
         return str
             .normalize("NFD")
@@ -148,7 +147,6 @@ class FootballQuizGame {
         const guess = this.playerInput.value.trim();
         if (!guess) return;
         
-        // LÓGICA DE COMPARAÇÃO ATUALIZADA
         const normalizedGuess = this.normalizeString(guess);
         const normalizedAnswer = this.normalizeString(this.currentGoal.player);
         const isCorrect = normalizedGuess === normalizedAnswer;
@@ -219,7 +217,6 @@ class FootballQuizGame {
             const hintValue = hintItem.querySelector('.hint-value');
             let value = this.currentGoal[hintType];
             
-            // Translate foot type if it's the dominantFoot hint
             if (hintType === 'dominantFoot') {
                 value = window.i18n.translateFootType(value);
             }
@@ -248,7 +245,6 @@ class FootballQuizGame {
         
         this.goalDetailsCard.style.display = 'block';
 
-        // Use a timeout to ensure the animation triggers correctly
         setTimeout(() => {
             this.handleCardVisibility();
         }, 10);
@@ -335,15 +331,10 @@ class FootballQuizGame {
         }
     }
     
-    // CORREÇÃO FINAL 1: Adicionada verificação de segurança.
+    // CORREÇÃO 1: A verificação de segurança foi REMOVIDA.
+    // Agora confiamos que o HTML está correto e o cronômetro vai iniciar.
     startCountdown() {
         const timer = document.getElementById('countdownTimer');
-
-        // Se o elemento do timer não for encontrado, exibe um erro e sai da função.
-        if (!timer) {
-            console.error("Element with ID 'countdownTimer' not found. The countdown will not start.");
-            return;
-        }
         
         const updateCountdown = () => {
             const now = new Date();
@@ -418,7 +409,8 @@ class FootballQuizGame {
             this.videoElement.muted = false;
             this.showGoalDetailsCard();
             
-            // CORREÇÃO FINAL 2: Mantida a chamada com setTimeout para evitar a condição de corrida.
+            // CORREÇÃO 2: Mantida a chamada com setTimeout para evitar a condição de corrida
+            // e removida a chamada duplicada que havia no seu código anterior.
             setTimeout(() => this.showEndGameModal(), 10);
         }
         
