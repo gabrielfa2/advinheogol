@@ -146,9 +146,10 @@ class FootballQuizGame {
         this.resetUI();
         this.loadVideo();
         
-        // REVELA A PRIMEIRA DICA AUTOMATICAMENTE
-        this.revealHint(this.hintSequence[0]);
-        this.hintsRevealed = 1;
+        // ALTERAÇÃO: A revelação automática da primeira dica foi desativada.
+        // As linhas abaixo foram comentadas para que o jogo inicie com 0 dicas.
+        // this.revealHint(this.hintSequence[0]);
+        // this.hintsRevealed = 1;
 
         this.updateUI();
         this.saveGameState();
