@@ -270,6 +270,10 @@ class FootballQuizGame {
         const goalPlayer = document.getElementById('goalPlayer');
         const goalDescription = document.getElementById('goalDescription');
         const nextGameCountdown = document.getElementById('nextGameCountdown');
+
+        // ALTERAÇÃO 2: A linha abaixo foi movida do final da função para o início.
+        // Isso garante que o modal esteja visível ANTES de tentarmos manipular seu conteúdo.
+        modal.style.display = 'block';
         
         if (this.gameWon) {
             modalTitle.textContent = window.i18n.t('congratulations') + ' 🎉';
@@ -295,7 +299,7 @@ class FootballQuizGame {
         }
         
         this.showVictoryChart();
-        modal.style.display = 'block';
+        // A linha modal.style.display = 'block'; estava aqui antes da correção.
     }
     
     showVictoryChart() {
@@ -409,6 +413,7 @@ class FootballQuizGame {
             this.guessButton.disabled = true;
             this.videoElement.muted = false;
             this.showGoalDetailsCard();
+            // ALTERAÇÃO 1: Adicionada a chamada para o modal de fim de jogo.
             this.showEndGameModal();
         }
         
