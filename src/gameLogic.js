@@ -409,7 +409,7 @@ class FootballQuizGame {
             this.guessButton.disabled = true;
             this.videoElement.muted = false;
             this.showGoalDetailsCard();
-            this.showEndGameModal();
+          this.showEndGameModal();
         }
         
         this.updateUI();
