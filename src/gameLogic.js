@@ -271,8 +271,6 @@ class FootballQuizGame {
         const goalDescription = document.getElementById('goalDescription');
         const nextGameCountdown = document.getElementById('nextGameCountdown');
 
-        // ALTERAÇÃO 2: A linha abaixo foi movida do final da função para o início.
-        // Isso garante que o modal esteja visível ANTES de tentarmos manipular seu conteúdo.
         modal.style.display = 'block';
         
         if (this.gameWon) {
@@ -299,7 +297,6 @@ class FootballQuizGame {
         }
         
         this.showVictoryChart();
-        // A linha modal.style.display = 'block'; estava aqui antes da correção.
     }
     
     showVictoryChart() {
@@ -338,8 +335,15 @@ class FootballQuizGame {
         }
     }
     
+    // CORREÇÃO FINAL 1: Adicionada verificação de segurança.
     startCountdown() {
         const timer = document.getElementById('countdownTimer');
+
+        // Se o elemento do timer não for encontrado, exibe um erro e sai da função.
+        if (!timer) {
+            console.error("Element with ID 'countdownTimer' not found. The countdown will not start.");
+            return;
+        }
         
         const updateCountdown = () => {
             const now = new Date();
@@ -413,8 +417,8 @@ class FootballQuizGame {
             this.guessButton.disabled = true;
             this.videoElement.muted = false;
             this.showGoalDetailsCard();
-            // ALTERAÇÃO 1: Adicionada a chamada para o modal de fim de jogo.
-            this.showEndGameModal();
+            
+            // CORREÇÃO FINAL 2: Mantida a chamada com setTimeout para evitar a condição de corrida.
             setTimeout(() => this.showEndGameModal(), 10);
         }
         
