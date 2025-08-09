@@ -11,6 +11,9 @@ class FootballQuizGame {
         
         this.hintSequence = ['team', 'year', 'competition', 'position', 'dominantFoot', 'jerseyNumber'];
         
+        // Propriedade para o intervalo do cronômetro diário
+        this.dailyTimerInterval = null; // NOVO
+
         // Get DOM elements
         this.videoElement = document.getElementById('gameVideo');
         this.playerInput = document.getElementById('playerInput');
@@ -21,6 +24,7 @@ class FootballQuizGame {
         this.statsRemaining = document.getElementById('statsRemaining');
         this.statsCorrect = document.getElementById('statsCorrect');
         this.goalDetailsCard = document.getElementById('goalDetailsCard'); // Get card element
+        this.dailyTimerDisplay = document.getElementById('daily-timer-display'); // NOVO: Elemento do cronômetro
         
         this.init();
     }
@@ -30,8 +34,51 @@ class FootballQuizGame {
         this.loadGame();
         this.setupAutoComplete();
         this.updateUI();
+        this.initializeDailyTimer(); // NOVO: Inicia o cronômetro diário global
     }
     
+    // NOVO: Função para o cronômetro diário que fica sempre visível
+    initializeDailyTimer() {
+        // Se o elemento do cronômetro não existir, não faz nada
+        if (!this.dailyTimerDisplay) {
+            console.warn("Elemento para o cronômetro diário ('daily-timer-display') não foi encontrado.");
+            return;
+        }
+
+        // Limpa qualquer intervalo anterior para evitar múltiplos cronômetros rodando
+        if (this.dailyTimerInterval) {
+            clearInterval(this.dailyTimerInterval);
+        }
+
+        const updateTimer = () => {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const timeLeft = tomorrow - now;
+            
+            // Se o tempo acabou, pode-se forçar um reload para carregar o novo desafio
+            if (timeLeft <= 0) {
+                 this.dailyTimerDisplay.textContent = "00:00:00";
+                 clearInterval(this.dailyTimerInterval);
+                 // Opcional: recarregar a página para o novo desafio
+                 // location.reload(); 
+                 return;
+            }
+
+            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            // Formata a string para sempre ter dois dígitos (ex: 09:05:01)
+            this.dailyTimerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        };
+        
+        updateTimer(); // Chama a função uma vez imediatamente para não esperar o primeiro segundo
+        this.dailyTimerInterval = setInterval(updateTimer, 1000); // Atualiza a cada segundo
+    }
+
     setupEventListeners() {
         console.log('Setting up event listeners');
         this.guessButton.addEventListener('click', () => this.makeGuess());
@@ -49,12 +96,9 @@ class FootballQuizGame {
     }
     
     handleCardVisibility() {
-        // Only manage visibility if the game has ended
         if (!this.gameEnded) {
             return;
         }
-
-        // Apply scroll-based logic for all screen sizes
         if (window.scrollY > 20) {
             this.goalDetailsCard.classList.add('is-visible');
         } else {
@@ -112,7 +156,6 @@ class FootballQuizGame {
         this.playerInput.disabled = false;
         this.guessButton.disabled = false;
         
-        // Hide and reset the card state
         this.goalDetailsCard.style.display = 'none';
         this.goalDetailsCard.classList.remove('is-visible');
     }
@@ -134,7 +177,6 @@ class FootballQuizGame {
         });
     }
 
-    // NOVA FUNÇÃO para normalizar strings (remover acentos e converter para minúsculas)
     normalizeString(str) {
         return str
             .normalize("NFD")
@@ -148,7 +190,6 @@ class FootballQuizGame {
         const guess = this.playerInput.value.trim();
         if (!guess) return;
         
-        // LÓGICA DE COMPARAÇÃO ATUALIZADA
         const normalizedGuess = this.normalizeString(guess);
         const normalizedAnswer = this.normalizeString(this.currentGoal.player);
         const isCorrect = normalizedGuess === normalizedAnswer;
@@ -219,7 +260,6 @@ class FootballQuizGame {
             const hintValue = hintItem.querySelector('.hint-value');
             let value = this.currentGoal[hintType];
             
-            // Translate foot type if it's the dominantFoot hint
             if (hintType === 'dominantFoot') {
                 value = window.i18n.translateFootType(value);
             }
@@ -248,7 +288,6 @@ class FootballQuizGame {
         
         this.goalDetailsCard.style.display = 'block';
 
-        // Use a timeout to ensure the animation triggers correctly
         setTimeout(() => {
             this.handleCardVisibility();
         }, 10);
@@ -291,7 +330,8 @@ class FootballQuizGame {
         
         if (this.gameMode === 'daily') {
             nextGameCountdown.style.display = 'block';
-            this.startCountdown();
+            // MODIFICADO: A linha abaixo não é mais necessária, pois o cronômetro agora é global.
+            // this.startCountdown(); 
         } else {
             nextGameCountdown.style.display = 'none';
         }
@@ -335,11 +375,11 @@ class FootballQuizGame {
         }
     }
     
-    // CORREÇÃO FINAL 1: Adicionada verificação de segurança.
+    // MODIFICADO: Esta função agora é redundante, mas a deixamos caso você a use em outro lugar.
+    // O novo cronômetro é 'initializeDailyTimer'.
     startCountdown() {
         const timer = document.getElementById('countdownTimer');
 
-        // Se o elemento do timer não for encontrado, exibe um erro e sai da função.
         if (!timer) {
             console.error("Element with ID 'countdownTimer' not found. The countdown will not start.");
             return;
@@ -418,7 +458,6 @@ class FootballQuizGame {
             this.videoElement.muted = false;
             this.showGoalDetailsCard();
             
-            // CORREÇÃO FINAL 2: Mantida a chamada com setTimeout para evitar a condição de corrida.
             setTimeout(() => this.showEndGameModal(), 10);
         }
         
