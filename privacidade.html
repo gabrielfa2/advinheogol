@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/index.css" />
     
     <!-- SEO Meta Tags -->
     <title>Política de Privacidade - Adivinhe o Gol</title>
@@ -25,6 +26,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
     <style>
         .legal-page {
             max-width: 800px;
@@ -392,6 +395,44 @@
         </main>
     </div>
 
-    <script type="module" src="/src/privacidade.js"></script>
+    <script>
+        // Language switching functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+        const backText = document.querySelector('[data-back-text]');
+
+        const translations = {
+            'br': '← Voltar ao Jogo',
+            'en': '← Back to Game',
+            'es': '← Volver al Juego'
+        };
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all buttons
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all content sections
+                contentSections.forEach(section => section.classList.remove('active'));
+                
+                // Show selected content section
+                const lang = button.id.split('-')[1];
+                const targetContent = document.getElementById(`content-${lang}`);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+
+                // Update back button text
+                if (backText && translations[lang]) {
+                    backText.textContent = translations[lang];
+                }
+            });
+        });
+    </script>
 </body>
 </html>
