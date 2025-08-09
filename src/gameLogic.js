@@ -49,16 +49,13 @@ class FootballQuizGame {
     }
     
     handleCardVisibility() {
-        // Only manage visibility if the game has ended and card exists
-        if (!this.gameEnded || !this.goalDetailsCard) {
+        // Only manage visibility if the game has ended
+        if (!this.gameEnded) {
             return;
         }
 
-        // For mobile devices or when scrolled, show the card
-        const isMobile = window.innerWidth <= 768;
-        const shouldShow = isMobile || window.scrollY > 20;
-        
-        if (shouldShow) {
+        // Apply scroll-based logic for all screen sizes
+        if (window.scrollY > 20) {
             this.goalDetailsCard.classList.add('is-visible');
         } else {
             this.goalDetailsCard.classList.remove('is-visible');
@@ -185,15 +182,10 @@ class FootballQuizGame {
         this.gameEnded = true;
         this.videoElement.muted = false;
         this.revealAllHints();
+        this.showGoalDetailsCard();
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
         this.updateStatistics('win', this.attemptsUsed);
-        
-        // Ensure the card is shown after a brief delay to allow for UI updates
-        setTimeout(() => {
-            this.showGoalDetailsCard();
-        }, 100);
-        
         setTimeout(() => this.showEndGameModal(), 2000);
     }
     
@@ -216,13 +208,8 @@ class FootballQuizGame {
         this.videoElement.muted = false;
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
+        this.showGoalDetailsCard();
         this.updateStatistics('loss', this.attemptsUsed);
-        
-        // Ensure the card is shown after a brief delay to allow for UI updates
-        setTimeout(() => {
-            this.showGoalDetailsCard();
-        }, 100);
-        
         setTimeout(() => this.showEndGameModal(), 2000);
     }
     
@@ -247,23 +234,11 @@ class FootballQuizGame {
     }
     
     showGoalDetailsCard() {
-        // Ensure all required elements exist
-        if (!this.goalDetailsCard) {
-            console.error('Goal details card element not found');
-            return;
-        }
-        
         const playerName = document.getElementById('cardPlayerName');
         const description = document.getElementById('cardDescription');
         const team = document.getElementById('cardTeam');
         const year = document.getElementById('cardYear');
         const competition = document.getElementById('cardCompetition');
-        
-        // Verify all elements exist before proceeding
-        if (!playerName || !description || !team || !year || !competition) {
-            console.error('One or more card content elements not found');
-            return;
-        }
         
         playerName.textContent = this.currentGoal.player;
         description.textContent = this.currentGoal.description;
@@ -271,16 +246,12 @@ class FootballQuizGame {
         year.textContent = this.currentGoal.year;
         competition.textContent = this.currentGoal.competition;
         
-        // Force display the card
         this.goalDetailsCard.style.display = 'block';
-        
-        // Force a reflow to ensure the display change takes effect
-        this.goalDetailsCard.offsetHeight;
 
-        // Use a longer timeout to ensure the animation triggers correctly
+        // Use a timeout to ensure the animation triggers correctly
         setTimeout(() => {
             this.handleCardVisibility();
-        }, 50);
+        }, 10);
     }
     
     updateUI() {
@@ -437,11 +408,7 @@ class FootballQuizGame {
             this.playerInput.disabled = true;
             this.guessButton.disabled = true;
             this.videoElement.muted = false;
-            
-            // Ensure the card is shown with a delay for loaded games
-            setTimeout(() => {
-                this.showGoalDetailsCard();
-            }, 200);
+            this.showGoalDetailsCard();
         }
         
         this.updateUI();
