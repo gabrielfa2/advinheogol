@@ -7,9 +7,9 @@ const GAME_DATA = [
         team: "Corinthians",
         year: 2009,
         competition: "Campeonato Paulista",
-        position: "Atacante",
         jerseyNumber: 9,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Um gol icónico de cobertura contra o Santos na final do Paulistão, demonstrando a classe e experiência do fenómeno brasileiro."
     },
     {
@@ -19,9 +19,9 @@ const GAME_DATA = [
         team: "Atlético Mineiro",
         year: 2013,
         competition: "Copa Libertadores",
-        position: "Meia-Atacante",
         jerseyNumber: 10,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Um gol de livre magistral que ajudou o Atlético a conquistar a Libertadores, mostrando toda a magia do craque gaúcho."
     },
     {
@@ -31,9 +31,9 @@ const GAME_DATA = [
         team: "Real Madrid",
         year: 2018,
         competition: "Champions League",
-        position: "Atacante",
         jerseyNumber: 7,
         dominantFoot: "Direito",
+        nationality: "Português",
         description: "Gol espetacular de bicicleta na Champions League, demonstrando a técnica e atleticismo do craque português."
     },
     {
@@ -43,9 +43,9 @@ const GAME_DATA = [
         team: "Barcelona",
         year: 1994,
         competition: "La Liga",
-        position: "Atacante",
         jerseyNumber: 11,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Um gol de oportunismo puro do baixinho, demonstrando sua capacidade de finalização dentro da área."
     },
     {
@@ -55,9 +55,9 @@ const GAME_DATA = [
         team: "Flamengo",
         year: 1981,
         competition: "Copa Libertadores",
-        position: "Meio-Campista",
         jerseyNumber: 10,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Livre direto perfeito do Galinho de Quintino, um dos seus muitos golazos pelo Mengão na conquista da Libertadores."
     },
     {
@@ -67,9 +67,9 @@ const GAME_DATA = [
         team: "Milan",
         year: 2007,
         competition: "Champions League",
-        position: "Meio-Campista",
         jerseyNumber: 22,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Gol espetacular do craque brasileiro na semifinal da Champions, mostrando velocidade e precisão na finalização."
     },
     {
@@ -79,9 +79,9 @@ const GAME_DATA = [
         team: "Barcelona",
         year: 2001,
         competition: "La Liga",
-        position: "Meia-Atacante",
         jerseyNumber: 10,
         dominantFoot: "Esquerdo",
+        nationality: "Brasileiro",
         description: "Hat-trick histórico contra o Valencia, com o último golo sendo uma bicicleta antológica que garantiu a vaga na Champions."
     },
     {
@@ -91,9 +91,9 @@ const GAME_DATA = [
         team: "Deportivo",
         year: 1992,
         competition: "La Liga",
-        position: "Atacante",
         jerseyNumber: 11,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Gol decisivo na conquista histórica do campeonato espanhol pelo Deportivo, demonstrando a categoria do atacante brasileiro."
     },
     {
@@ -103,9 +103,9 @@ const GAME_DATA = [
         team: "Brasil",
         year: 1962,
         competition: "Copa do Mundo",
-        position: "Ponta Direita",
         jerseyNumber: 7,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Gol mágico do Anjo das Pernas Tortas na Copa do Mundo do Chile, driblando meio time adversário antes de finalizar."
     },
     {
@@ -115,9 +115,9 @@ const GAME_DATA = [
         team: "Santos",
         year: 2011,
         competition: "Copa Libertadores",
-        position: "Ponta Esquerda",
         jerseyNumber: 11,
         dominantFoot: "Direito",
+        nationality: "Brasileiro",
         description: "Gol antológico do jovem craque santista, mostrando dribles desconcertantes e finalização perfeita na conquista da Libertadores."
     }
 ];
