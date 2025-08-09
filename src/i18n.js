@@ -15,7 +15,7 @@ class I18n {
                 number: 'Número',
                 dominantFoot: 'Pé Dominante',
                 playerPlaceholder: 'Digite o nome do jogador...',
-                guess: 'Adivinhar',
+                guess: 'Advinhar',
                 dailyChallenge: '📅 Desafio Diário',
                 freePlay: '🎮 Jogar à Vontade',
                 congratulations: 'Parabéns!',
