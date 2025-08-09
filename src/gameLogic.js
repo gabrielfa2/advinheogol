@@ -25,7 +25,7 @@ class FootballQuizGame {
     constructor() {
         this.currentGoal = null;
         this.attemptsUsed = 0;
-        this.maxAttempts = 6; // Alterado para 6 tentativas/dicas
+        this.maxAttempts = 7; // Alterado para 6 tentativas/dicas
         this.hintsRevealed = 0;
         this.gameEnded = false;
         this.gameWon = false;
