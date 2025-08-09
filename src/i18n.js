@@ -8,6 +8,7 @@ class I18n {
                 attemptsUsed: 'Tentativas Usadas',
                 attemptsRemaining: 'Tentativas Restantes',
                 hits: 'Acertos',
+                nationality: 'Nacionalidade', // <-- ADICIONADO
                 team: 'Equipe',
                 year: 'Ano',
                 competition: 'Competição',
@@ -40,6 +41,7 @@ class I18n {
                 attemptsUsed: 'Attempts Used',
                 attemptsRemaining: 'Attempts Remaining',
                 hits: 'Hits',
+                nationality: 'Nationality', // <-- ADICIONADO
                 team: 'Team',
                 year: 'Year',
                 competition: 'Competition',
@@ -72,6 +74,7 @@ class I18n {
                 attemptsUsed: 'Intentos Usados',
                 attemptsRemaining: 'Intentos Restantes',
                 hits: 'Aciertos',
+                nationality: 'Nacionalidad', // <-- ADICIONADO
                 team: 'Equipo',
                 year: 'Año',
                 competition: 'Competición',
