@@ -186,7 +186,7 @@ class FootballQuizGame {
         this.playerInput.disabled = true;
         this.guessButton.disabled = true;
         this.updateStatistics('win', this.attemptsUsed);
-        setTimeout(() => this.showEndGameModal(), 2000);
+        setTimeout(() => this.showEndGameModal(), 1000);
     }
     
     handleIncorrectGuess() {
@@ -210,7 +210,7 @@ class FootballQuizGame {
         this.guessButton.disabled = true;
         this.showGoalDetailsCard();
         this.updateStatistics('loss', this.attemptsUsed);
-        setTimeout(() => this.showEndGameModal(), 2000);
+        setTimeout(() => this.showEndGameModal(), 1000);
     }
     
     revealHint(hintType) {
