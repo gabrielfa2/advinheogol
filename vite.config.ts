@@ -1,13 +1,12 @@
-// Arquivo: vite.config.ts (VERSÃO FINAL CORRIGIDA)
+// Arquivo: vite.config.ts (VERSÃO FINAL E CORRETA)
 
 import { defineConfig } from 'vite';
-// CORREÇÃO: Este plugin usa "export default", então o importamos sem as chaves {}.
-// O nome "viteStaticCopy" pode ser qualquer um, mas este é o convencional.
-import viteStaticCopy from 'vite-plugin-static-copy';
+// A importação correta, que usa chaves e o nome 'viteStaticCopy'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
-    // Usando a importação default que acabamos de corrigir.
+    // Chamando a função importada corretamente
     viteStaticCopy({
       targets: [
         {
