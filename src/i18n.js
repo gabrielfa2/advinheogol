@@ -24,7 +24,7 @@ class I18n {
                 victoryDistribution: 'Distribuição de Vitórias',
                 share: '📱 Partilhar',
                 newGame: '🎯 Novo Jogo',
-                nextChallenge: 'Próximo desafi em:',
+                nextChallenge: 'Próximo desafio em:',
                 termsOfUse: 'Termos de Uso',
                 privacyPolicy: 'Política de Privacidade',
                 contact: 'Contato',
