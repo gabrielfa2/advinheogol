@@ -23,19 +23,24 @@ class App {
         }
     }
     
+    // ... (início da classe App) ...
     initialize() {
         try {
             console.log('Initializing app...');
             
-            // Initialize game
+            // Cria a instância do jogo
             this.game = new window.FootballQuizGame();
             console.log('Game initialized');
             
-            // Initialize modal
+            // Cria a instância do modal, passando a instância do jogo
             this.modal = new window.GameModal(this.game);
             console.log('Modal initialized');
+
+            // >>>>> ADICIONE ESTA LINHA ABAIXO <<<<<
+            // Conecta o modal de volta ao jogo, completando o ciclo.
+            this.game.setModal(this.modal); 
+            // >>>>> FIM DA LINHA A ADICIONAR <<<<<
             
-            // Add any additional app-level functionality
             this.setupGlobalEventListeners();
             
             console.log('Advinhe o Gol initialized successfully');
@@ -45,7 +50,7 @@ class App {
             this.showErrorMessage('Erro ao carregar o jogo. Recarregue a página.');
         }
     }
-    
+// ... (resto da classe App) ...
     setupGlobalEventListeners() {
         // Handle visibility change to pause/resume video
         document.addEventListener('visibilitychange', () => {
