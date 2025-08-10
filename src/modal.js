@@ -34,8 +34,8 @@ class GameModal {
         // Configura o conteúdo com base no resultado
         modalTitle.textContent = isWin ? 'Parabéns!' : 'Não foi desta vez!';
         modalResult.innerHTML = this.game.generateShareText(false); // Gera os quadrados de resultado
-        goalPlayer.textContent = this.game.currentGoal.player;
-        goalDescription.textContent = this.game.currentGoal.description;
+        goalPlayer.textContent = this.game.correctPlayer.name;
+        goalDescription.textContent = this.game.correctPlayer.description;
 
         // Limpa qualquer cronômetro anterior antes de iniciar um novo
         if (this.countdownIntervalId) {
@@ -59,52 +59,12 @@ class GameModal {
         }
         
         // Atualiza o gráfico de vitórias
-        this.updateVictoryChart();
+        this.game.stats.updateVictoryChart();
 
         // Finalmente, exibe o modal
         this.modal.style.display = 'block';
     }
 
-    updateVictoryChart() {
-        const stats = this.game.getStatistics();
-        const chartElement = document.getElementById('victoryChart');
-        
-        if (!chartElement) return;
-        
-        // Clear existing chart
-        chartElement.innerHTML = '';
-        
-        // Create chart bars for attempts 1-7
-        for (let i = 1; i <= 7; i++) {
-            const count = stats.distribution[i] || 0;
-            const percentage = stats.totalWins > 0 ? (count / stats.totalWins) * 100 : 0;
-            
-            const barContainer = document.createElement('div');
-            barContainer.className = 'chart-bar-container';
-            
-            const barLabel = document.createElement('div');
-            barLabel.className = 'chart-bar-label';
-            barLabel.textContent = i;
-            
-            const barWrapper = document.createElement('div');
-            barWrapper.className = 'chart-bar-wrapper';
-            
-            const bar = document.createElement('div');
-            bar.className = 'chart-bar';
-            bar.style.height = `${Math.max(percentage, 2)}%`;
-            
-            const barCount = document.createElement('div');
-            barCount.className = 'chart-bar-count';
-            barCount.textContent = count;
-            
-            barWrapper.appendChild(bar);
-            barContainer.appendChild(barLabel);
-            barContainer.appendChild(barWrapper);
-            barContainer.appendChild(barCount);
-            
-            chartElement.appendChild(barContainer);
-        }
-    }
     close() {
         this.modal.style.display = 'none';
 
