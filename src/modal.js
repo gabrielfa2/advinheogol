@@ -34,8 +34,8 @@ class GameModal {
         // Configura o conteúdo com base no resultado
         modalTitle.textContent = isWin ? 'Parabéns!' : 'Não foi desta vez!';
         modalResult.innerHTML = this.game.generateShareText(false); // Gera os quadrados de resultado
-        goalPlayer.textContent = this.game.correctPlayer.name;
-        goalDescription.textContent = this.game.correctPlayer.description;
+        goalPlayer.textContent = this.game.currentGoal.player;
+        goalDescription.textContent = this.game.currentGoal.description;
 
         // Limpa qualquer cronômetro anterior antes de iniciar um novo
         if (this.countdownIntervalId) {
