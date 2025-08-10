@@ -24,22 +24,26 @@ class App {
     }
     
     // ... (início da classe App) ...
+    // ... (início da classe App) ...
     initialize() {
         try {
             console.log('Initializing app...');
             
-            // Cria a instância do jogo
+            // 1. Cria a instância do jogo, MAS AINDA NÃO O INICIA.
             this.game = new window.FootballQuizGame();
-            console.log('Game initialized');
+            console.log('Game object created');
             
-            // Cria a instância do modal, passando a instância do jogo
+            // 2. Cria a instância do modal, passando a instância do jogo.
             this.modal = new window.GameModal(this.game);
-            console.log('Modal initialized');
+            console.log('Modal object created');
+            
+            // 3. Conecta o modal de volta ao jogo.
+            this.game.setModal(this.modal);
+            console.log('Modal linked to game');
 
-            // >>>>> ADICIONE ESTA LINHA ABAIXO <<<<<
-            // Conecta o modal de volta ao jogo, completando o ciclo.
-            this.game.setModal(this.modal); 
-            // >>>>> FIM DA LINHA A ADICIONAR <<<<<
+            // 4. AGORA SIM, com tudo conectado, iniciamos o jogo.
+            this.game.init();
+            console.log('Game logic initialized');
             
             this.setupGlobalEventListeners();
             
@@ -47,9 +51,11 @@ class App {
             
         } catch (error) {
             console.error('Error initializing app:', error);
-            this.showErrorMessage('Erro ao carregar o jogo. Recarregue a página.');
+            // O erro original agora deve dar mais detalhes se algo der errado.
+            this.showErrorMessage(error.message || 'Erro ao carregar o jogo. Recarregue a página.');
         }
     }
+
 // ... (resto da classe App) ...
     setupGlobalEventListeners() {
         // Handle visibility change to pause/resume video
