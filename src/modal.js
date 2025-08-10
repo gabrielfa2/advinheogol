@@ -1,4 +1,6 @@
 // Modal functionality
+import { startDailyCountdown } from './countdown.js';
+
 class GameModal {
     constructor(game) {
         this.game = game;
