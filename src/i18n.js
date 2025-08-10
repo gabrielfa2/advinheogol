@@ -57,7 +57,7 @@ class I18n {
                 victoryDistribution: 'Victory Distribution',
                 share: '📱 Share',
                 newGame: '🎯 New Game',
-                nextChallenge: 'Next challenge in: Tomorrow',
+                nextChallenge: 'Next challenge: Tomorrow',
                 termsOfUse: 'Terms of Use',
                 privacyPolicy: 'Privacy Policy',
                 contact: 'Contact',
