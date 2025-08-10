@@ -58,11 +58,163 @@ class FootballQuizGame {
         this.initializeDailyCountdown();
     }
     
+    
     initializeDailyCountdown() {
-        if (!this.countdownTimerModal) {
+        const timerEl = document.getElementById('countdownTimer');
+        if (!timerEl) {
             console.warn("Elemento 'countdownTimer' não foi encontrado.");
             return;
         }
+
+        // Estilização para ficar visível e destacado no modal
+        timerEl.style.fontWeight = 'bold';
+        timerEl.style.fontSize = '1.2em';
+        timerEl.style.color = '#ff4444';
+
+        // Se a classe original estiver disponível, usa ela
+        if (window.DailyCountdownTimer) {
+            this.dailyCountdownTimer = new window.DailyCountdownTimer('countdownTimer', {
+                format: 'HH:MM:SS',
+                autoStart: true,
+                onComplete: () => console.log('Novo desafio diário disponível!')
+            });
+            return;
+        }
+
+        // Fallback simples
+        console.log("DailyCountdownTimer não encontrado, usando fallback inline.");
+        const calcularTempoAteMeiaNoite = () => {
+            const agora = new Date();
+            const amanha = new Date();
+            amanha.setDate(amanha.getDate() + 1);
+            amanha.setHours(0, 0, 0, 0);
+            const restante = amanha.getTime() - agora.getTime();
+            return {
+                horas: Math.floor(restante / (1000 * 60 * 60)),
+                minutos: Math.floor((restante % (1000 * 60 * 60)) / (1000 * 60)),
+                segundos: Math.floor((restante % (1000 * 60)) / 1000)
+            };
+        };
+
+        const formatar = t => 
+            `${t.horas.toString().padStart(2, '0')}:${t.minutos.toString().padStart(2, '0')}:${t.segundos.toString().padStart(2, '0')}`;
+
+        let ativo = true;
+        const atualizar = () => {
+            if (!ativo) return;
+            const t = calcularTempoAteMeiaNoite();
+            timerEl.textContent = formatar(t);
+        };
+        atualizar();
+        const interval = setInterval(atualizar, 1000);
+
+        // Objeto compatível com API mínima usada
+        this.dailyCountdownTimer = {
+            isActive: () => ativo,
+            stop: () => { ativo = false; clearInterval(interval); },
+            destroy: () => { ativo = false; clearInterval(interval); }
+        };
+    }
+
+
+        // Destroy previous timer if exists
+        try {
+            if (this.dailyCountdownTimer && typeof this.dailyCountdownTimer.destroy === 'function') {
+                this.dailyCountdownTimer.destroy();
+            }
+        } catch (err) {
+            console.warn('Erro ao destruir cronômetro anterior:', err);
+        }
+
+        // Prefer the provided DailyCountdownTimer if it's available.
+        try {
+            if (window.DailyCountdownTimer && typeof window.DailyCountdownTimer === 'function') {
+                this.dailyCountdownTimer = new window.DailyCountdownTimer('countdownTimer', {
+                    format: 'HH:MM:SS',
+                    autoStart: true,
+                    onComplete: () => {
+                        console.log('Novo desafio diário disponível!');
+                    },
+                    onTick: (timeLeft, formattedTime) => {
+                        // no-op by default; the class already updates the element
+                    }
+                });
+                return;
+            }
+        } catch (e) {
+            console.error('DailyCountdownTimer falhou ao inicializar:', e);
+            // fallback below
+        }
+
+        // If we reach here, the external class is not available or failed. Use fallback.
+        this.setupFallbackCountdown();
+    }
+
+    /**
+     * Fallback countdown implementation (used when DailyCountdownTimer isn't available)
+     */
+    setupFallbackCountdown() {
+        const el = document.getElementById('countdownTimer');
+        if (!el) {
+            console.warn("Fallback: elemento 'countdownTimer' não encontrado.");
+            return;
+        }
+
+        // Clear any existing fallback interval
+        if (this._fallbackInterval) {
+            clearInterval(this._fallbackInterval);
+            this._fallbackInterval = null;
+        }
+
+        const computeTime = () => {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const diff = tomorrow.getTime() - now.getTime();
+            const total = diff > 0 ? diff : 24 * 60 * 60 * 1000;
+            const hours = Math.floor(total / (1000 * 60 * 60));
+            const minutes = Math.floor((total % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((total % (1000 * 60)) / 1000);
+            return { total, hours, minutes, seconds };
+        };
+
+        const formatTime = (t) => {
+            return `${t.hours.toString().padStart(2, '0')}:${t.minutes.toString().padStart(2, '0')}:${t.seconds.toString().padStart(2, '0')}`;
+        };
+
+        const tick = () => {
+            const t = computeTime();
+            el.textContent = formatTime(t);
+            // If reaches zero, reset immediately (next midnight)
+            if (t.total <= 1000) {
+                // briefly show 00:00:00 then recompute on next tick
+                el.textContent = "00:00:00";
+            }
+        };
+
+        // Initial render and setup interval
+        tick();
+        this._fallbackInterval = setInterval(tick, 1000);
+
+        // Provide a minimal API similar to DailyCountdownTimer
+        this.dailyCountdownTimer = {
+            isActive: () => !!this._fallbackInterval,
+            stop: () => {
+                if (this._fallbackInterval) {
+                    clearInterval(this._fallbackInterval);
+                    this._fallbackInterval = null;
+                }
+            },
+            destroy: () => {
+                if (this._fallbackInterval) {
+                    clearInterval(this._fallbackInterval);
+                    this._fallbackInterval = null;
+                }
+                this.dailyCountdownTimer = null;
+            }
+        };
+    }
         
         // Destrói o cronômetro anterior se existir
         if (this.dailyCountdownTimer) {
