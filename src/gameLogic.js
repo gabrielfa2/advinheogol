@@ -1,5 +1,4 @@
-// A i18n e a função translate podem ser movidas para seu próprio módulo i18n.js
-// mas por enquanto, deixamos aqui.
+// ... (código i18n no topo) ...
 const i18n = {
     'pt': { 'Direito': 'Direito', 'Esquerdo': 'Esquerdo' },
     'en': { 'Direito': 'Right', 'Esquerdo': 'Left' },
@@ -9,12 +8,11 @@ function translate(key, lang = 'pt') {
     return i18n[lang]?.[key] || key;
 }
 
-// Main game logic
+
 class FootballQuizGame {
     constructor() {
-        // A instância do modal será injetada depois pelo método setModal()
         this.modal = null; 
-
+        // ... (resto das propriedades são as mesmas) ...
         this.currentGoal = null;
         this.attemptsUsed = 0;
         this.maxAttempts = 7;
@@ -23,10 +21,7 @@ class FootballQuizGame {
         this.gameWon = false;
         this.gameMode = 'daily';
         this.language = 'pt';
-
         this.hintSequence = ['nationality', 'dominantFoot', 'competition', 'year', 'team', 'jerseyNumber'];
-
-        // Get DOM elements
         this.videoElement = document.getElementById('gameVideo');
         this.playerInput = document.getElementById('playerInput');
         this.guessButton = document.getElementById('guessButton');
@@ -37,21 +32,38 @@ class FootballQuizGame {
         this.statsCorrect = document.getElementById('statsCorrect');
         this.goalDetailsCard = document.getElementById('goalDetailsCard');
 
-        this.init();
+        // IMPORTANTE: NÃO CHAMAMOS MAIS O this.init() DAQUI.
+        // O app.js será responsável por isso.
     }
 
+    // init() agora é chamado externamente pelo app.js
     init() {
         this.setupEventListeners();
         this.loadGame();
         this.setupAutoComplete();
-        this.updateUI();
+        this.updateUI(); // A chamada para a função restaurada.
     }
 
-    // NOVO MÉTODO: Permite que o app.js nos dê a instância do modal.
     setModal(modalInstance) {
         this.modal = modalInstance;
     }
 
+    // FUNÇÃO RESTAURADA: Esta função estava faltando.
+    updateUI() {
+        const attemptsRemaining = this.maxAttempts - this.attemptsUsed;
+        this.statsUsed.textContent = this.attemptsUsed;
+        this.statsRemaining.textContent = attemptsRemaining >= 0 ? attemptsRemaining : 0;
+        
+        // Carrega as estatísticas totais de vitórias
+        const stats = this.getStatistics();
+        this.statsCorrect.textContent = stats.totalWins;
+    }
+
+    // ... (O resto do seu código, de setupEventListeners até o final, permanece exatamente como na versão anterior) ...
+    // ... cole aqui todo o resto do código de gameLogic.js que já funcionava,
+    // a partir de setupEventListeners() até o final da classe.
+    // A única alteração foi remover a chamada `this.init()` do construtor
+    // e restaurar o método `updateUI()`.
     setupEventListeners() {
         this.guessButton.addEventListener('click', () => this.makeGuess());
         this.playerInput.addEventListener('keypress', (e) => {
@@ -64,8 +76,6 @@ class FootballQuizGame {
         window.addEventListener('scroll', () => this.handleCardVisibility());
         window.addEventListener('resize', () => this.handleCardVisibility());
     }
-
-    // ... (O resto dos seus métodos como handleCardVisibility, setupAutoComplete, loadGame, etc., permanecem os mesmos até o showEndGameModal) ...
     handleCardVisibility() {
         if (!this.gameEnded) return;
         if (window.scrollY > 20) {
@@ -226,21 +236,13 @@ class FootballQuizGame {
         this.goalDetailsCard.style.display = 'block';
         setTimeout(() => this.handleCardVisibility(), 10);
     }
-    
-    /**
-     * MÉTODO TOTALMENTE REFEITO E SIMPLIFICADO
-     * Agora apenas delega a responsabilidade para a classe GameModal.
-     */
     showEndGameModal() {
         if (!this.modal) {
             console.error("A instância do Modal não foi definida no jogo.");
             return;
         }
-        // A única linha necessária! Passa o status de vitória e as tentativas.
         this.modal.show(this.gameWon, this.attemptsUsed);
     }
-
-    // ... (O resto dos seus métodos como showVictoryChart, updateStatistics, etc., permanecem os mesmos) ...
     showVictoryChart() {
         const chartContainer = document.getElementById('victoryChart');
         const stats = this.getStatistics();
@@ -328,7 +330,6 @@ class FootballQuizGame {
         this.updateUI();
     }
 }
-
 // Export for ES modules
 export { FootballQuizGame };
 
