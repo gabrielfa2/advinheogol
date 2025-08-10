@@ -4,6 +4,7 @@ import './autocomplete.js';
 import './gameLogic.js';
 import './modal.js';
 import './i18n.js';
+import './dailyCountdown.js';
 
 // Main application initialization
 class App {
