@@ -259,5 +259,45 @@
     </footer>
 
     <script type="module" src="/src/app.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function startCountdown() {
+        const countdownContainer = document.getElementById("nextGameCountdown");
+        const countdownTimer = document.getElementById("countdownTimer");
+
+        if (!countdownContainer || !countdownTimer) return;
+
+        countdownContainer.style.display = "block";
+
+        function updateTimer() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+
+            const diff = midnight - now;
+
+            if (diff <= 0) {
+                countdownTimer.textContent = "00:00:00";
+                return;
+            }
+
+            const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+            countdownTimer.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    }
+
+    // Inicie o contador automaticamente ao carregar a página
+    // (se quiser iniciar apenas quando o desafio terminar, mova essa chamada para o local correto no seu código)
+    startCountdown();
+});
+</script>
+
 </body>
 </html>
