@@ -19,6 +19,7 @@ function translate(key, lang = 'pt') {
     return i18n[lang][key] || key;
 }
 
+
 // Main game logic
 class FootballQuizGame {
     constructor() {
@@ -54,14 +55,11 @@ class FootballQuizGame {
         this.loadGame(); // Inicia o jogo diário ao carregar a página
         this.setupAutoComplete();
         this.updateUI();
-        // Removemos a inicialização do cronômetro aqui, pois será feito no modal
+        this.initializeDailyCountdown();
     }
     
     initializeDailyCountdown() {
-        // CORREÇÃO: Use o elemento correto (countdownTimer dentro do modal)
-        const timerElement = document.getElementById('countdownTimer');
-        
-        if (!timerElement) {
+        if (!this.countdownTimerModal) {
             console.warn("Elemento 'countdownTimer' não foi encontrado.");
             return;
         }
@@ -71,22 +69,20 @@ class FootballQuizGame {
             this.dailyCountdownTimer.destroy();
         }
         
-        // Cria novo cronômetro
+        // Cria novo cronômetro usando a classe DailyCountdownTimer
         this.dailyCountdownTimer = new window.DailyCountdownTimer('countdownTimer', {
             format: 'HH:MM:SS',
             autoStart: true,
             onComplete: () => {
                 console.log('Novo desafio diário disponível!');
-                // Recarrega a página quando o tempo acabar
-                setTimeout(() => location.reload(), 2000);
+                // Aqui você pode adicionar lógica adicional quando um novo dia começar
+                // Por exemplo, mostrar uma notificação ou recarregar o desafio
             },
-            onTick: () => {
-                // Atualizações a cada segundo
+            onTick: (timeLeft, formattedTime) => {
+                // Callback opcional para cada segundo que passa
+                // Pode ser usado para animações ou outras atualizações
             }
         });
-        
-        // Atualização imediata
-        this.dailyCountdownTimer.updateDisplay();
     }
 
     setupEventListeners() {
@@ -327,8 +323,10 @@ class FootballQuizGame {
         
         if (this.gameMode === 'daily') {
             nextGameCountdown.style.display = 'block';
-            // CORREÇÃO: Inicializa o cronômetro quando o modal é exibido
-            this.initializeDailyCountdown();
+            // Garante que o cronômetro está funcionando quando o modal é exibido
+            if (!this.dailyCountdownTimer || !this.dailyCountdownTimer.isActive()) {
+                this.initializeDailyCountdown();
+            }
         } else {
             nextGameCountdown.style.display = 'none';
         }

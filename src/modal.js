@@ -41,10 +41,13 @@ class GameModal {
     close() {
         this.modal.style.display = 'none';
         
-        // CORREÇÃO: Pare o cronômetro ao fechar o modal
-        if (this.game.dailyCountdownTimer && this.game.dailyCountdownTimer.isActive()) {
+        // Para o cronômetro quando o modal é fechado (opcional)
+        // Comentado para manter o cronômetro rodando em background
+        /*
+        if (this.game.dailyCountdownTimer) {
             this.game.dailyCountdownTimer.stop();
         }
+        */
     }
     
     async share() {
