@@ -190,31 +190,32 @@
     </div>
 
     <div id="gameEndModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle" data-key="congratulations">Parabéns!</h2>
-                <span class="modal-close">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div id="modalResult" class="modal-result"></div>
-                <div class="goal-details">
-                    <h3 id="goalPlayer"></h3>
-                    <p id="goalDescription"></p>
-                </div>
-                <div class="statistics-chart">
-                    <h4 data-key="victoryDistribution">Distribuição de Vitórias</h4>
-                    <div id="victoryChart" class="victory-chart"></div>
-                </div>
-                <div class="modal-actions">
-                    <button id="shareButton" class="share-button" data-key="share">📱 Partilhar</button>
-                    <button id="newGameButton" class="new-game-button" data-key="newGame">🎯 Novo Jogo</button>
-                </div>
-                <div id="nextGameCountdown" class="countdown" style="display: none;">
-                    <p data-key="nextChallenge">Próximo desafio em: <span id="countdownTimer"></span></p>
-                </div>
-            </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle" data-key="congratulations">Parabéns!</h2>
+            <span class="modal-close">&times;</span>
         </div>
-    </div>
+        <div class="modal-body">
+            <div id="modalResult" class="modal-result"></div>
+            <div class="goal-details">
+                <h3 id="goalPlayer"></h3>
+                <p id="goalDescription"></p>
+            </div>
+            <div class="statistics-chart">
+                <h4 data-key="victoryDistribution">Distribuição de Vitórias</h4>
+                <div id="victoryChart" class="victory-chart"></div>
+            </div>
+            <div class="modal-actions">
+                <button id="shareButton" class="share-button" data-key="share">📱 Partilhar</button>
+                <button id="newGameButton" class="new-game-button" data-key="newGame">🎯 Novo Jogo</button>
+            </div>
+            
+            <div id="nextGameCountdown" class="countdown" style="display: none;">
+                <p data-key="nextChallenge">Próximo desafio em: <span id="src/dailyCountdown"></span></p>
+            </div>
+          </div>
+      </div>
+  </div>
 
     <div id="goalDetailsCard" class="goal-details-card" style="display: none;">
         <div class="card-content">
