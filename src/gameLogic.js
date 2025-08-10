@@ -1,4 +1,4 @@
-// ... (código i18n no topo) ...
+// ... (código i18n e início da classe FootballQuizGame) ...
 const i18n = {
     'pt': { 'Direito': 'Direito', 'Esquerdo': 'Esquerdo' },
     'en': { 'Direito': 'Right', 'Esquerdo': 'Left' },
@@ -8,11 +8,9 @@ function translate(key, lang = 'pt') {
     return i18n[lang]?.[key] || key;
 }
 
-
 class FootballQuizGame {
     constructor() {
-        this.modal = null; 
-        // ... (resto das propriedades são as mesmas) ...
+        this.modal = null;
         this.currentGoal = null;
         this.attemptsUsed = 0;
         this.maxAttempts = 7;
@@ -31,39 +29,28 @@ class FootballQuizGame {
         this.statsRemaining = document.getElementById('statsRemaining');
         this.statsCorrect = document.getElementById('statsCorrect');
         this.goalDetailsCard = document.getElementById('goalDetailsCard');
-
-        // IMPORTANTE: NÃO CHAMAMOS MAIS O this.init() DAQUI.
-        // O app.js será responsável por isso.
     }
 
-    // init() agora é chamado externamente pelo app.js
     init() {
         this.setupEventListeners();
         this.loadGame();
         this.setupAutoComplete();
-        this.updateUI(); // A chamada para a função restaurada.
+        this.updateUI();
     }
 
     setModal(modalInstance) {
         this.modal = modalInstance;
     }
 
-    // FUNÇÃO RESTAURADA: Esta função estava faltando.
     updateUI() {
         const attemptsRemaining = this.maxAttempts - this.attemptsUsed;
         this.statsUsed.textContent = this.attemptsUsed;
         this.statsRemaining.textContent = attemptsRemaining >= 0 ? attemptsRemaining : 0;
-        
-        // Carrega as estatísticas totais de vitórias
         const stats = this.getStatistics();
         this.statsCorrect.textContent = stats.totalWins;
     }
 
-    // ... (O resto do seu código, de setupEventListeners até o final, permanece exatamente como na versão anterior) ...
-    // ... cole aqui todo o resto do código de gameLogic.js que já funcionava,
-    // a partir de setupEventListeners() até o final da classe.
-    // A única alteração foi remover a chamada `this.init()` do construtor
-    // e restaurar o método `updateUI()`.
+    // ... (Todos os outros métodos de setupEventListeners até getStatistics permanecem aqui) ...
     setupEventListeners() {
         this.guessButton.addEventListener('click', () => this.makeGuess());
         this.playerInput.addEventListener('keypress', (e) => {
@@ -243,33 +230,6 @@ class FootballQuizGame {
         }
         this.modal.show(this.gameWon, this.attemptsUsed);
     }
-    showVictoryChart() {
-        const chartContainer = document.getElementById('victoryChart');
-        const stats = this.getStatistics();
-        chartContainer.innerHTML = '';
-        for (let i = 1; i <= this.maxAttempts; i++) {
-            const count = stats.distribution[i] || 0;
-            const percentage = stats.totalGames > 0 ? (count / stats.totalGames) * 100 : 0;
-            const row = document.createElement('div');
-            row.className = 'chart-row';
-            const label = document.createElement('div');
-            label.className = 'chart-label';
-            label.textContent = i;
-            const bar = document.createElement('div');
-            bar.className = 'chart-bar';
-            const fill = document.createElement('div');
-            fill.className = 'chart-fill';
-            fill.style.width = `${percentage}%`;
-            const countEl = document.createElement('div');
-            countEl.className = 'chart-count';
-            countEl.textContent = count;
-            bar.appendChild(fill);
-            row.appendChild(label);
-            row.appendChild(bar);
-            row.appendChild(countEl);
-            chartContainer.appendChild(row);
-        }
-    }
     updateStatistics(result, attempts) {
         const stats = this.getStatistics();
         stats.totalGames++;
@@ -284,6 +244,43 @@ class FootballQuizGame {
         const saved = localStorage.getItem('gameStatistics');
         return saved ? JSON.parse(saved) : defaultStats;
     }
+
+    /**
+     * NOVO MÉTODO ADICIONADO
+     * Gera o texto para compartilhamento ou o HTML para o modal de resultado.
+     * @param {boolean} forSharing - Se true, retorna texto plano com emojis. Se false, retorna HTML.
+     * @returns {string}
+     */
+    generateShareText(forSharing = true) {
+        const goalId = this.gameMode === 'daily' ? `#${window.getDailyGoal().id}` : '';
+        const title = `Advinhe o Gol ${goalId}`;
+        
+        let squares = '';
+        for (let i = 0; i < this.attemptsUsed; i++) {
+            const isCorrectAttempt = this.gameWon && i === this.attemptsUsed - 1;
+            squares += isCorrectAttempt ? '🟩' : '🟥';
+        }
+
+        if (forSharing) {
+            // Versão para compartilhar (texto plano com emojis)
+            const resultLine = this.gameWon ? `${this.attemptsUsed}/${this.maxAttempts}` : `X/${this.maxAttempts}`;
+            return `${title} ${resultLine}\n\n${squares}\n\nJogue também! https://advinheogol.com/`;
+        } else {
+            // Versão para o modal (HTML)
+            let squaresHtml = '';
+            for (let i = 0; i < this.maxAttempts; i++) {
+                let boxClass = '';
+                if (i < this.attemptsUsed) {
+                    const isCorrectAttempt = this.gameWon && i === this.attemptsUsed - 1;
+                    boxClass = isCorrectAttempt ? 'correct' : 'used';
+                }
+                squaresHtml += `<div class="attempt-box ${boxClass}"></div>`;
+            }
+            return `<div class="attempts-boxes">${squaresHtml}</div>`;
+        }
+    }
+
+    // ... (O resto dos métodos, como saveGameState e loadGameState, permanecem aqui) ...
     saveGameState() {
         if (this.gameMode === 'daily') {
             const gameState = {
@@ -330,6 +327,7 @@ class FootballQuizGame {
         this.updateUI();
     }
 }
+
 // Export for ES modules
 export { FootballQuizGame };
 
