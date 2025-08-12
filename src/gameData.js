@@ -86,15 +86,15 @@ const GAME_DATA = [
     },
     {
         id: 8,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
-        player: "Bebeto",
-        team: "Deportivo",
-        year: 1992,
-        competition: "La Liga",
-        jerseyNumber: 11,
-        dominantFoot: "Direito",
-        nationality: "Brasileiro",
-        description: "Gol decisivo na conquista histórica do campeonato espanhol pelo Deportivo, demonstrando a categoria do atacante brasileiro."
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance6.mp4",
+        player: "Messi",
+        team: "Barcelona",
+        year: 2012,
+        competition: "Supercopa da Espanha",
+        jerseyNumber: 10,
+        dominantFoot: "Esquerdo",
+        nationality: "Argentino",
+        description: "Gol da pulga de falta absurdo contra o Real Madrid no El Classico na final da Supercopa da Espanha"
     },
     {
         id: 9,
