@@ -62,7 +62,7 @@ const GAME_DATA = [
     },
     {
         id: 6,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance3.mp4",
         player: "Kaká",
         team: "Milan",
         year: 2007,
