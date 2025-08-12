@@ -46,9 +46,10 @@ class FootballQuizGame {
         this.statsCorrect = document.getElementById('statsCorrect');
         this.goalDetailsCard = document.getElementById('goalDetailsCard');
         this.countdownTimerModal = document.getElementById('countdownTimer');
-
-        this.init();
         this.maxBlur = 16; // Define a intensidade máxima do blur em pixels
+      
+        this.init();
+    
     }
 
     init() {
