@@ -448,7 +448,7 @@ body::before {
     }
     .video-container {
         width: 100%; /* Garante que o vídeo ocupe a largura total no celular */
-        max-width: 500px; /* Define uma largura máxima para evitar que fique grande demais em tablets */
+        max-width: 600px; /* Define uma largura máxima para evitar que fique grande demais em tablets */
     }
 
     .hints-grid {
