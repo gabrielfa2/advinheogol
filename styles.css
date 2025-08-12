@@ -130,6 +130,8 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: blur(var(--video-blur, 16px)); /* Valor inicial do blur */
+    transition: filter 0.5s ease-out; /* Transição suave */
 }
 
 .video-overlay {
