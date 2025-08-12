@@ -118,10 +118,12 @@ body::before {
 .video-container {
     position: relative;
     width: 100%;
+    aspect-ratio: 4 / 3; /* Adiciona a proporção 4:3 */
     border-radius: 16px;
     overflow: hidden;
     background: #1f2937;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    margin: 0 auto; /* Garante que o container esteja centralizado */
 }
 
 .game-video {
