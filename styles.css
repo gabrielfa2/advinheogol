@@ -444,7 +444,6 @@ body::before {
 
     /* Ajustes específicos para o layout mobile */
     .attempts-section {
-        margin-top: -16px; /* Puxa para mais perto do título */
         margin-bottom: 0;
     }
     .video-container {
