@@ -26,7 +26,7 @@ const GAME_DATA = [
     },
     {
         id: 3,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance12.mp4",
         player: "Cristiano Ronaldo",
         team: "Real Madrid",
         year: 2018,
