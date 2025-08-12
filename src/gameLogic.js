@@ -48,7 +48,7 @@ class FootballQuizGame {
         this.countdownTimerModal = document.getElementById('countdownTimer');
         
         // Define a intensidade máxima do blur em pixels
-        this.maxBlur = 16; 
+        this.maxBlur = 10; 
         
         this.init();
     }
