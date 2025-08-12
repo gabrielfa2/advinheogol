@@ -98,7 +98,7 @@ const GAME_DATA = [
     },
     {
         id: 9,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance1.mp4",
         player: "Garrincha",
         team: "Brasil",
         year: 1962,
@@ -110,7 +110,7 @@ const GAME_DATA = [
     },
     {
         id: 10,
-        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videocr7teste.mp4",
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance5.mp4",
         player: "Neymar",
         team: "Santos",
         year: 2011,
