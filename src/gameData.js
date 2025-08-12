@@ -142,7 +142,7 @@ const GAME_DATA = [
         jerseyNumber: 10,
         dominantFoot: "Esquerdo",
         nationality: "Brasileiro",
-        description: "Gol de pura técnica e precisão do craque brasileiro em noite de Champions, deixando o marcador para trás e finalizando com categoria."
+        description: "Gol de pura técnica e precisão do craque brasileiro em noite de La Liga, deixando o marcador para trás e finalizando com categoria."
     }
 ];
 
