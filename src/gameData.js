@@ -34,7 +34,7 @@ const GAME_DATA = [
         jerseyNumber: 7,
         dominantFoot: "Direito",
         nationality: "Português",
-        description: "Gol espetacular de bicicleta na Champions League, demonstrando a técnica e atleticismo do craque português."
+        description: "Gol de bicicleta antológico na Champions League, demonstrando a técnica e atleticismo do craque português."
     },
     {
         id: 4,
