@@ -158,7 +158,6 @@ class FootballQuizGame {
         
         // Salva o estado inicial do jogo assim que ele começa.
         // Isso garante que se o usuário fechar a aba, ele poderá continuar de onde parou.
-        this.saveGameState();
         this.updateVideoBlur(); // Adicione esta linha para definir o blur inicial
         this.saveGameState();
     }
