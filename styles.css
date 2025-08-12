@@ -422,13 +422,14 @@ body::before {
 
 /* --- RESPONSIVE LAYOUT PARA MOBILE (Até 1024px) --- */
 @media (max-width: 1024px) {
+    
+    .header {
+        margin-bottom: 16px; /* Reduz a margem inferior do título */
+    }
     .main-content {
         display: flex;
         flex-direction: column;
         gap: 24px; /* Espaçamento ajustado para mobile */
-    }
-    .header {
-        margin-bottom: 16px; /* Reduz a margem inferior do título */
     }
 
     /* REORDENANDO OS ELEMENTOS PARA MOBILE (ORDEM CORRIGIDA) */
