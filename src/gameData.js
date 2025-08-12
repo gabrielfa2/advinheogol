@@ -119,6 +119,30 @@ const GAME_DATA = [
         dominantFoot: "Direito",
         nationality: "Brasileiro",
         description: "Gol antológico do jovem craque santista, mostrando dribles desconcertantes e finalização perfeita na conquista da Libertadores."
+    },
+    {
+        id: 11,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance8.mp4",
+        player: "Rivaldo",
+        team: "Barcelona",
+        year: 2001,
+        competition: "La Liga",
+        jerseyNumber: 10,
+        dominantFoot: "Esquerdo",
+        nationality: "Brasileiro",
+        description: "Mais uma obra de arte de Rivaldo, com um chutaço de fora da área característico de sua genialidade."
+    },
+    {
+        id: 12,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance9.mp4",
+        player: "Rivaldo",
+        team: "Barcelona",
+        year: 2001,
+        competition: "La Liga",
+        jerseyNumber: 10,
+        dominantFoot: "Esquerdo",
+        nationality: "Brasileiro",
+        description: "Gol de pura técnica e precisão do craque brasileiro em noite de Champions, deixando o marcador para trás e finalizando com categoria."
     }
 ];
 
