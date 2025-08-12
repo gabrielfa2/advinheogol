@@ -10,6 +10,10 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
+          src: 'sitemap.xml', // ADICIONE ESTA LINHA
+          dest: '.'
+        },
+        {
           src: 'contato.html',
           dest: '.'
         },
