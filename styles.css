@@ -427,6 +427,9 @@ body::before {
         flex-direction: column;
         gap: 24px; /* Espaçamento ajustado para mobile */
     }
+    .header {
+        margin-bottom: 16px; /* Reduz a margem inferior do título */
+    }
 
     /* REORDENANDO OS ELEMENTOS PARA MOBILE (ORDEM CORRIGIDA) */
     .attempts-section   { order: 1; }
