@@ -434,6 +434,66 @@ class FootballQuizGame {
             this.showGoalDetailsCard();
             setTimeout(() => this.showEndGameModal(), 10);
         }
+        updateVideoBlur() {
+        if (this.gameEnded) {
+            // Remove completamente o blur se o jogo acabou (ganhou ou perdeu)
+            this.videoElement.style.setProperty('--video-blur', '0px');
+            return;
+        }
+
+        // Calcula a intensidade do blur com base nas tentativas restantes
+        // A fórmula garante que o blur diminua a cada tentativa
+        const remainingAttempts = this.maxAttempts - this.attemptsUsed;
+        const blurFactor = remainingAttempts / this.maxAttempts;
+        let blurValue = this.maxBlur * blurFactor;
+
+        // Garante que o blur seja 0 na última tentativa
+        if (this.attemptsUsed >= this.maxAttempts - 1) {
+            blurValue = 0;
+        }
+
+        // Aplica o valor calculado à variável CSS
+        this.videoElement.style.setProperty('--video-blur', `${blurValue}px`);
+    }
+
+    handleCorrectGuess() {
+        this.gameWon = true;
+        this.gameEnded = true;
+        this.videoElement.muted = false;
+        
+        this.updateVideoBlur(); // Adicione esta linha para remover o blur
+        
+        this.revealAllHints();
+        this.showGoalDetailsCard();
+        // ... (resto da função) ...
+    }
+
+    handleIncorrectGuess() {
+        this.playerInput.value = '';
+        if (this.hintsRevealed < this.hintSequence.length) {
+            this.revealHint(this.hintSequence[this.hintsRevealed]);
+            this.hintsRevealed++;
+        }
+        
+        this.updateVideoBlur(); // Adicione esta linha para diminuir o blur
+        
+        if (this.attemptsUsed >= this.maxAttempts) {
+            this.handleGameOver();
+        }
+    }
+    
+    loadGameState(gameState) {
+        // ... (código existente) ...
+
+        // Adicione a chamada para restaurar o blur correto ao carregar um jogo salvo
+        this.updateVideoBlur(); 
+
+        if (this.gameEnded) {
+            // ... (código existente) ...
+        }
+
+        this.updateUI();
+    }
 
         this.updateUI();
     }
