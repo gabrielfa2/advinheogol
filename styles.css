@@ -424,7 +424,7 @@ body::before {
 @media (max-width: 1024px) {
     
     .header {
-        margin-bottom: 16px; /* Reduz a margem inferior do título */
+        margin-bottom: 30px; /* Reduz a margem inferior do título */
     }
     .main-content {
         display: flex;
