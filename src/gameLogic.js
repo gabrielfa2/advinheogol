@@ -46,10 +46,11 @@ class FootballQuizGame {
         this.statsCorrect = document.getElementById('statsCorrect');
         this.goalDetailsCard = document.getElementById('goalDetailsCard');
         this.countdownTimerModal = document.getElementById('countdownTimer');
-        this.maxBlur = 16; // Define a intensidade máxima do blur em pixels
-      
+        
+        // Define a intensidade máxima do blur em pixels
+        this.maxBlur = 16; 
+        
         this.init();
-    
     }
 
     init() {
@@ -66,23 +67,15 @@ class FootballQuizGame {
             return;
         }
         
-        // Destrói o cronômetro anterior se existir
         if (this.dailyCountdownTimer) {
             this.dailyCountdownTimer.destroy();
         }
         
-        // Cria novo cronômetro usando a classe DailyCountdownTimer
         this.dailyCountdownTimer = new window.DailyCountdownTimer('countdownTimer', {
             format: 'HH:MM:SS',
             autoStart: true,
             onComplete: () => {
                 console.log('Novo desafio diário disponível!');
-                // Aqui você pode adicionar lógica adicional quando um novo dia começar
-                // Por exemplo, mostrar uma notificação ou recarregar o desafio
-            },
-            onTick: (timeLeft, formattedTime) => {
-                // Callback opcional para cada segundo que passa
-                // Pode ser usado para animações ou outras atualizações
             }
         });
     }
@@ -95,10 +88,7 @@ class FootballQuizGame {
             }
         });
         this.playAgainButton.addEventListener('click', () => this.startNewGame('freeplay'));
-
-        // ALTERAÇÃO: O botão do desafio diário agora chama a nova lógica de inicialização.
         this.dailyChallengeButton.addEventListener('click', () => this.initializeDailyChallenge());
-
         window.addEventListener('scroll', () => this.handleCardVisibility());
         window.addEventListener('resize', () => this.handleCardVisibility());
     }
@@ -118,12 +108,10 @@ class FootballQuizGame {
         this.autocomplete = new window.AutoComplete(this.playerInput, suggestionsElement, playerNames);
     }
     
-    // ALTERAÇÃO: A função loadGame agora apenas chama a nova lógica centralizada.
     loadGame() {
         this.initializeDailyChallenge();
     }
 
-    // NOVO MÉTODO: Centraliza a lógica para iniciar ou carregar o desafio diário.
     initializeDailyChallenge() {
         this.gameMode = 'daily';
         const today = new Date().toDateString();
@@ -131,16 +119,13 @@ class FootballQuizGame {
         const savedGameState = localStorage.getItem('gameState');
         const currentDailyGoalId = window.getDailyGoal().id;
 
-        // Verifica se o estado salvo é de hoje E se corresponde ao gol diário atual
         if (savedGameState) {
             const parsedState = JSON.parse(savedGameState);
             if (lastPlayed === today && parsedState.goalId === currentDailyGoalId) {
                 this.loadGameState(parsedState);
-                return; // Impede a criação de um novo jogo
+                return;
             }
         }
-
-        // Se nenhuma condição acima for atendida, inicia um novo jogo diário.
         this.startNewGame('daily');
     }
 
@@ -156,10 +141,8 @@ class FootballQuizGame {
         this.loadVideo();
         this.updateUI();
         
-        // Salva o estado inicial do jogo assim que ele começa.
-        // Isso garante que se o usuário fechar a aba, ele poderá continuar de onde parou.
-        this.saveGameState();
-        this.updateVideoBlur(); // Adicione esta linha para definir o blur inicial
+        // Aplica o blur inicial ao começar um novo jogo
+        this.updateVideoBlur(); 
         this.saveGameState();
     }
 
@@ -229,11 +212,39 @@ class FootballQuizGame {
             currentBox.classList.add('used');
         }
     }
+    
+    // ===============================================
+    // ========= FUNÇÕES RELACIONADAS AO BLUR =========
+    // ===============================================
+
+    updateVideoBlur() {
+        if (this.gameEnded) {
+            // Remove completamente o blur se o jogo acabou
+            this.videoElement.style.setProperty('--video-blur', '0px');
+            return;
+        }
+
+        const remainingAttempts = this.maxAttempts - this.attemptsUsed;
+        const blurFactor = remainingAttempts / this.maxAttempts;
+        let blurValue = this.maxBlur * blurFactor;
+
+        // Garante que o blur seja 0 na penúltima e última tentativa
+        if (this.attemptsUsed >= this.maxAttempts - 1) {
+            blurValue = 0;
+        }
+
+        // Aplica o valor calculado à variável CSS
+        this.videoElement.style.setProperty('--video-blur', `${blurValue}px`);
+    }
 
     handleCorrectGuess() {
         this.gameWon = true;
         this.gameEnded = true;
         this.videoElement.muted = false;
+        
+        // Remove o blur
+        this.updateVideoBlur(); 
+        
         this.revealAllHints();
         this.showGoalDetailsCard();
         this.playerInput.disabled = true;
@@ -248,10 +259,18 @@ class FootballQuizGame {
             this.revealHint(this.hintSequence[this.hintsRevealed]);
             this.hintsRevealed++;
         }
+        
+        // Diminui o blur
+        this.updateVideoBlur(); 
+        
         if (this.attemptsUsed >= this.maxAttempts) {
             this.handleGameOver();
         }
     }
+    
+    // ===============================================
+    // ===============================================
+    // ===============================================
 
     handleGameOver() {
         this.gameEnded = true;
@@ -327,7 +346,6 @@ class FootballQuizGame {
         
         if (this.gameMode === 'daily') {
             nextGameCountdown.style.display = 'block';
-            // Garante que o cronômetro está funcionando quando o modal é exibido
             if (!this.dailyCountdownTimer || !this.dailyCountdownTimer.isActive()) {
                 this.initializeDailyCountdown();
             }
@@ -385,7 +403,7 @@ class FootballQuizGame {
     saveGameState() {
         if (this.gameMode === 'daily') {
             const gameState = {
-                goalId: this.currentGoal.id, // Salva o ID do gol para verificação
+                goalId: this.currentGoal.id,
                 attemptsUsed: this.attemptsUsed,
                 hintsRevealed: this.hintsRevealed,
                 gameEnded: this.gameEnded,
@@ -397,9 +415,8 @@ class FootballQuizGame {
     }
     
     loadGameState(gameState) {
-        this.currentGoal = window.getDailyGoal(); // Garante que estamos sempre carregando o gol do dia
+        this.currentGoal = window.getDailyGoal();
         if (!this.currentGoal || this.currentGoal.id !== gameState.goalId) {
-            // Se o ID do gol salvo for diferente do atual, é um novo dia.
             this.startNewGame('daily'); 
             return;
         }
@@ -412,7 +429,6 @@ class FootballQuizGame {
         this.loadVideo();
         this.resetUI(); 
 
-        // Recarrega as tentativas
         const attemptBoxes = document.querySelectorAll('.attempt-box');
         for (let i = 0; i < this.attemptsUsed; i++) {
             if (i < attemptBoxes.length) {
@@ -421,75 +437,20 @@ class FootballQuizGame {
             }
         }
 
-        // Recarrega as dicas reveladas
         for (let i = 0; i < this.hintsRevealed; i++) {
             this.revealHint(this.hintSequence[i]);
         }
         
+        // Restaura o blur para o estado correto
+        this.updateVideoBlur(); 
+
         if (this.gameEnded) {
             this.playerInput.disabled = true;
             this.guessButton.disabled = true;
             this.videoElement.muted = false;
-            this.revealAllHints(); // Garante que todas as dicas sejam exibidas no final
+            this.revealAllHints();
             this.showGoalDetailsCard();
             setTimeout(() => this.showEndGameModal(), 10);
-        }
-        updateVideoBlur() {
-        if (this.gameEnded) {
-            // Remove completamente o blur se o jogo acabou (ganhou ou perdeu)
-            this.videoElement.style.setProperty('--video-blur', '0px');
-            return;
-        }
-
-        // Calcula a intensidade do blur com base nas tentativas restantes
-        // A fórmula garante que o blur diminua a cada tentativa
-        const remainingAttempts = this.maxAttempts - this.attemptsUsed;
-        const blurFactor = remainingAttempts / this.maxAttempts;
-        let blurValue = this.maxBlur * blurFactor;
-
-        // Garante que o blur seja 0 na última tentativa
-        if (this.attemptsUsed >= this.maxAttempts - 1) {
-            blurValue = 0;
-        }
-
-        // Aplica o valor calculado à variável CSS
-        this.videoElement.style.setProperty('--video-blur', `${blurValue}px`);
-    }
-
-    handleCorrectGuess() {
-        this.gameWon = true;
-        this.gameEnded = true;
-        this.videoElement.muted = false;
-        
-        this.updateVideoBlur(); // Adicione esta linha para remover o blur
-        
-        this.revealAllHints();
-        this.showGoalDetailsCard();
-        // ... (resto da função) ...
-    }
-
-    handleIncorrectGuess() {
-        this.playerInput.value = '';
-        if (this.hintsRevealed < this.hintSequence.length) {
-            this.revealHint(this.hintSequence[this.hintsRevealed]);
-            this.hintsRevealed++;
-        }
-        
-        this.updateVideoBlur(); // Adicione esta linha para diminuir o blur
-        
-        if (this.attemptsUsed >= this.maxAttempts) {
-            this.handleGameOver();
-        }
-    }
-    
-    loadGameState(gameState) {
-        // ... (código existente) ...
-
-        // Adicione a chamada para restaurar o blur correto ao carregar um jogo salvo
-        this.updateVideoBlur(); 
-
-        if (this.gameEnded) {
-            // ... (código existente) ...
         }
 
         this.updateUI();
