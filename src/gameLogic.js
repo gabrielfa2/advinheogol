@@ -491,10 +491,6 @@ class FootballQuizGame {
         if (this.gameEnded) {
             // ... (código existente) ...
         }
-
-        this.updateUI();
-    }
-
         this.updateUI();
     }
 }
