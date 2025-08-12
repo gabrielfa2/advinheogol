@@ -82,7 +82,7 @@ const GAME_DATA = [
         jerseyNumber: 10,
         dominantFoot: "Esquerdo",
         nationality: "Brasileiro",
-        description: "Hat-trick histórico contra o Valencia, com o último golo sendo uma bicicleta antológica que garantiu a vaga na Champions."
+        description: "Hat-trick histórico contra o Valencia, com o último gol sendo uma bicicleta antológica que garantiu a vaga na Champions."
     },
     {
         id: 8,
