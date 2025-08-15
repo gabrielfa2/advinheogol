@@ -242,15 +242,15 @@ const GAME_DATA = [
     },
     {
         id: 21,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance21.mp4",
         player: "Edin Višća",
         team: "Galatasaray",
-        year: null,
-        competition: null,
-        jerseyNumber: 7,
+        year: 2021,
+        competition: "Campeonato Turco",
+        jerseyNumber: 18,
         dominantFoot: "Direito",
         nationality: "Bósnio",
-        description: null
+        description: "Um gol que salvou o time no ultimo segundo! O bósnio colocou na gaveta para salvar no ultimo lance"
     },
     {
         id: 22,
