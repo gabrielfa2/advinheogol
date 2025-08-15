@@ -194,15 +194,15 @@ const GAME_DATA = [
     },
     {
         id: 17,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance17.mp4",
         player: "Nathan Tella",
         team: "Bayer Leverkusen",
-        year: null,
-        competition: null,
-        jerseyNumber: 23,
+        year: 2025,
+        competition: "Bundesliga",
+        jerseyNumber: 19,
         dominantFoot: "Direito",
         nationality: "Nigeriano",
-        description: null
+        description: "Gol impressionante do craque nigeriano chutando de supresa contra o Borussia Dortmund"
     },
     {
         id: 18,
