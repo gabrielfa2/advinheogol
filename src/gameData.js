@@ -218,15 +218,15 @@ const GAME_DATA = [
     },
     {
         id: 19,
-        videoUrl: null,
-        player: "Jamal Musiala",
-        team: "Bayern Munich",
-        year: null,
-        competition: null,
-        jerseyNumber: 42,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance19.mp4",
+        player: "Rafael Leão",
+        team: "Milan",
+        year: 2025,
+        competition: "Champions League",
+        jerseyNumber: 10,
         dominantFoot: "Direito",
-        nationality: "Alemão",
-        description: null
+        nationality: "Português",
+        description: "Golaço decisivo para vencer a partida contra o Girona."
     },
     {
         id: 20,
