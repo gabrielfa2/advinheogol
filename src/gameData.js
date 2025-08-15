@@ -206,15 +206,15 @@ const GAME_DATA = [
     },
     {
         id: 18,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance18.mp4",
         player: "Alphonso Davies",
-        team: "Bayern Munich",
-        year: null,
-        competition: null,
+        team: "Canadá",
+        year: 2022,
+        competition: "Copa do Mundo",
         jerseyNumber: 19,
         dominantFoot: "Direito",
         nationality: "Canadense",
-        description: null
+        description: "Gol de cabeça do canadense para abrir como o primeiro gol do Canadá na Copa do Mundo"
     },
     {
         id: 19,
