@@ -254,15 +254,15 @@ const GAME_DATA = [
     },
     {
         id: 22,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance22.mp4",
         player: "Jarrod Bowen",
         team: "West Ham United",
-        year: null,
-        competition: null,
+        year: 2023,
+        competition: "Conference League",
         jerseyNumber: 20,
         dominantFoot: "Direito",
         nationality: "Inglês",
-        description: null
+        description: "Um golaço absurdamente importante para salvar o placar contra a Fiorentina de virada!"
     }
 ];
 
