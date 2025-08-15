@@ -230,15 +230,15 @@ const GAME_DATA = [
     },
     {
         id: 20,
-        videoUrl: null,
-        player: "Domenico Berardi",
-        team: "Sassuolo",
-        year: null,
-        competition: null,
-        jerseyNumber: 25,
-        dominantFoot: "Direito",
-        nationality: "Italiano",
-        description: null
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance20.mp4",
+        player: "Lamine Yamal",
+        team: "Barcelona",
+        year: 2025,
+        competition: "Champions League",
+        jerseyNumber: 19,
+        dominantFoot: "Esquerdo",
+        nationality: "Espanhol",
+        description: "Gol absurdo do Golden Boy. Um golaço em plena Champions League com apenas 17 anos!"
     },
     {
         id: 21,
