@@ -185,9 +185,9 @@ const GAME_DATA = [
         videoUrl: null,
         player: "Callum Hudson-Odoi",
         team: "Nottingham Forest",
-        year: null,
-        competition: null,
-        jerseyNumber: 7,
+        year: 2023,
+        competition: "Premier League",
+        jerseyNumber: 14,
         dominantFoot: "Direito",
         nationality: "Inglês",
         description: null
