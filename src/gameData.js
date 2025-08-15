@@ -182,7 +182,7 @@ const GAME_DATA = [
     },
     {
         id: 16,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance16.mp4",
         player: "Callum Hudson-Odoi",
         team: "Nottingham Forest",
         year: 2023,
@@ -190,7 +190,7 @@ const GAME_DATA = [
         jerseyNumber: 14,
         dominantFoot: "Direito",
         nationality: "Inglês",
-        description: null
+        description: "Golaço! Bola na coruja em pleno campeonato inglês."
     },
     {
         id: 17,
