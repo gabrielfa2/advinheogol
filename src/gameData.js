@@ -170,15 +170,15 @@ const GAME_DATA = [
     },
     {
         id: 15,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance15.mp4",
         player: "Kingsley Coman",
         team: "Bayern Munich",
-        year: null,
-        competition: null,
-        jerseyNumber: 11,
+        year: 2020,
+        competition: "Bundesliga",
+        jerseyNumber: 29,
         dominantFoot: "Direito",
         nationality: "Francês",
-        description: null
+        description: "Gol de atacante nato do Coman defendendo a camisa do Bayern de Munique"
     },
     {
         id: 16,
