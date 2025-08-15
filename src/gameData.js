@@ -143,6 +143,126 @@ const GAME_DATA = [
         dominantFoot: "Esquerdo",
         nationality: "Brasileiro",
         description: "Gol de pura técnica e precisão do craque brasileiro em noite de La Liga, deixando o marcador para trás e finalizando com categoria."
+    },
+    {
+        id: 13,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance13.mp4",
+        player: "Raphinha",
+        team: "Leeds",
+        year: 2020,
+        competition: "Premier League",
+        jerseyNumber: 18,
+        dominantFoot: "Esquerdo",
+        nationality: "Brasileiro",
+        description: "Gol de placa do craque brasileiro Raphinha mandando a bola na gaveta na goleade de 5 a 0 para cima do West Bromwich"
+    },
+    {
+        id: 14,
+        videoUrl: null,
+        player: "Noni Madueke",
+        team: "Arsenal",
+        year: null,
+        competition: null,
+        jerseyNumber: 20,
+        dominantFoot: "Direito",
+        nationality: "Inglês",
+        description: null
+    },
+    {
+        id: 15,
+        videoUrl: null,
+        player: "Kingsley Coman",
+        team: "Bayern Munich",
+        year: null,
+        competition: null,
+        jerseyNumber: 11,
+        dominantFoot: "Direito",
+        nationality: "Francês",
+        description: null
+    },
+    {
+        id: 16,
+        videoUrl: null,
+        player: "Callum Hudson-Odoi",
+        team: "Nottingham Forest",
+        year: null,
+        competition: null,
+        jerseyNumber: 7,
+        dominantFoot: "Direito",
+        nationality: "Inglês",
+        description: null
+    },
+    {
+        id: 17,
+        videoUrl: null,
+        player: "Nathan Tella",
+        team: "Bayer Leverkusen",
+        year: null,
+        competition: null,
+        jerseyNumber: 23,
+        dominantFoot: "Direito",
+        nationality: "Nigeriano",
+        description: null
+    },
+    {
+        id: 18,
+        videoUrl: null,
+        player: "Alphonso Davies",
+        team: "Bayern Munich",
+        year: null,
+        competition: null,
+        jerseyNumber: 19,
+        dominantFoot: "Direito",
+        nationality: "Canadense",
+        description: null
+    },
+    {
+        id: 19,
+        videoUrl: null,
+        player: "Jamal Musiala",
+        team: "Bayern Munich",
+        year: null,
+        competition: null,
+        jerseyNumber: 42,
+        dominantFoot: "Direito",
+        nationality: "Alemão",
+        description: null
+    },
+    {
+        id: 20,
+        videoUrl: null,
+        player: "Domenico Berardi",
+        team: "Sassuolo",
+        year: null,
+        competition: null,
+        jerseyNumber: 25,
+        dominantFoot: "Direito",
+        nationality: "Italiano",
+        description: null
+    },
+    {
+        id: 21,
+        videoUrl: null,
+        player: "Edin Višća",
+        team: "Galatasaray",
+        year: null,
+        competition: null,
+        jerseyNumber: 7,
+        dominantFoot: "Direito",
+        nationality: "Bósnio",
+        description: null
+    },
+    {
+        id: 22,
+        videoUrl: null,
+        player: "Jarrod Bowen",
+        team: "West Ham United",
+        year: null,
+        competition: null,
+        jerseyNumber: 20,
+        dominantFoot: "Direito",
+        nationality: "Inglês",
+        description: null
     }
 ];
 
