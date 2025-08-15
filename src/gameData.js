@@ -158,15 +158,15 @@ const GAME_DATA = [
     },
     {
         id: 14,
-        videoUrl: null,
+        videoUrl: "https://pub-61992242d95c4c08a5588448f8a876fc.r2.dev/videolance14.mp4",
         player: "Noni Madueke",
-        team: "Arsenal",
-        year: null,
-        competition: null,
-        jerseyNumber: 20,
+        team: "Chelsea",
+        year: 2024,
+        competition: "Premier League",
+        jerseyNumber: 11,
         dominantFoot: "Direito",
         nationality: "Inglês",
-        description: null
+        description: "Gol de oportunista para diminuir o placar contra o Aston Villa em um grande jogo na Premier League"
     },
     {
         id: 15,
